@@ -1,5 +1,8 @@
 v1.1.0 2025-12-05 - The Spectral Expansion
--
+- i18n: Moved localization keys from the 'game:' domain to 'spookynights:'.
+- Candy Bags can now be placed on the ground.
+- Slightly lowered the spawn rate of Spectral creatures and refined their spawn conditions.
+- Added new sound effects (SFX) for the Spectral creatures.
 
 v1.0.1 2025-11-28 - Polishing & Fixes
 🐛 Technical Fixes

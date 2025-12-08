@@ -2,6 +2,7 @@
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace SpookyNights
 {
@@ -15,24 +16,44 @@ namespace SpookyNights
                 new WorldInteraction()
                 {
                     ActionLangCode = "spookynights:heldhelp-openbag",
-                    MouseButton = EnumMouseButton.Right
+                    MouseButton = EnumMouseButton.Right,
+                    ShouldApply = (wi, bs, es) => {
+                        var clientApi = api as ICoreClientAPI;
+                        // If clientApi is null (server side) or Player is sneaking, do not apply
+                        if (clientApi == null) return false;
+                        return !clientApi.World.Player.Entity.Controls.Sneak;
+                    }
                 }
-            };
+            }.Append(base.GetHeldInteractionHelp(inSlot));
         }
 
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstTick, ref EnumHandHandling handHandling)
         {
+            // If sneaking, let the base class handle it (triggers GroundStorable behavior)
+            if (byEntity.Controls.Sneak)
+            {
+                base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstTick, ref handHandling);
+                return;
+            }
+
+            // Otherwise, handle opening the bag
             handHandling = EnumHandHandling.Handled;
         }
 
         public override bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
+            // Cancel if player starts sneaking during usage
+            if (byEntity.Controls.Sneak) return false;
+
             float useDelay = slot.Itemstack.Attributes.GetFloat("useDelay", 0.5f);
             return secondsUsed < useDelay;
         }
 
         public override void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
+            // Do not open if sneaking (block placement handled by base class)
+            if (byEntity.Controls.Sneak) return;
+
             float useDelay = slot.Itemstack.Attributes.GetFloat("useDelay", 0.5f);
             if (secondsUsed < useDelay) return;
 
@@ -72,14 +93,7 @@ namespace SpookyNights
 
         private string GetWeightedRandomCandy()
         {
-            double roll = rand.NextDouble(); // 0.0 to 1.0
-
-            // NEW Probability Table (Increased Shadow Cube):
-            // 00% - 25% : Spider Gummy (Common)
-            // 25% - 50% : Mummy (Common)
-            // 50% - 70% : Ghost Caramel (Uncommon)
-            // 70% - 85% : Vampire Teeth (Rare)
-            // 85% - 100%: Shadow Cube (Rare)
+            double roll = rand.NextDouble();
 
             if (roll < 0.25) return "spookycandy-spidergummy";
             if (roll < 0.50) return "spookycandy-mummy";
