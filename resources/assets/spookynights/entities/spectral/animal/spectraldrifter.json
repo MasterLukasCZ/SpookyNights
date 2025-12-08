@@ -659,10 +659,17 @@
 					"*-tainted": 3,
 					"*-corrupt": 2,
 					"*-nightmare": 1,
-					"*-double-headed": 0.25
+					"*-double-headed": 1
 				},
 				"maxLightLevel": 14,
-				"chance": 0.25,
+        "chanceByType": {
+          "*-normal": 0.4,
+          "*-deep": 0.3,
+          "*-tainted": 0.2,
+          "*-corrupt": 0.1,
+          "*-nightmare": 0.05,
+          "*-double-headed": 0.02
+        },
 				"lightLevelType": "OnlyBlockLight",
 				"groupSize": {
 					"dist": "invexp",
