@@ -1,4 +1,71 @@
 {
+  "comment_1a": "//////////////////",
+  "comment_1b": "// game: domain //",
+  "comment_1c": "//////////////////",
+
+  "game:tabname-spookynights": "Spooky Nights",
+
+  "game:spookynights-quickstartguide-title": "Spooky Nights - Quick Start Guide",
+  "game:spookynights-quickstartguide-text": "<strong>\t\t - Quick Start Guide -</strong>\n\nWelcome to <strong>Spooky Nights</strong>. The world has changed. The nights are darker, the shadows are moving, and ancient spirits have awoken. This overhaul mod introduces a new layer of survival focused on horror, combat strategy, and supernatural metallurgy.\n\n<font size=\"14\"><strong>Why stay in the dark?</strong></font>\nThis mod is not just about harder enemies; it is about <strong>adaptation and reward</strong>.\n\n<strong>1. A New Challenge</strong>\nStandard survival tactics won't work. Spectral enemies possess a <strong>Resistance</strong> that dulls your steel blades (-50% Damage). You can no longer rely solely on brute force; you must prepare.\n\n<strong>2. Progressive Metallurgy</strong>\nHunting these spirits rewards you with <strong><a href=\"handbooksearch://Spectral Heart\">Spectral Hearts</a></strong>. These are the key to a new tier of metallurgy:  <strong><a href=\"handbook://item-ingot-spectrium\">Spectrium</a></strong>, <strong><a href=\"handbook://item-ingot-etherium\">Etherium</a></strong>, and <strong><a href=\"handbook://item-ingot-aetherium\">Aetherium</a></strong>. Each alloy makes you a more efficient hunter, turning the predator into prey.\n\n<strong>3. Strategic Combat</strong>\nThe mod introduces the <strong><a href=\"handbooksearch://warscythe\">warscythe</a></strong>, a specialized polearm with massive reach (3.2m). Prefer your trusty Spear or Falx? You can craft standard Arrows, Spears, and Falx blades using the new spectral metals. This allows you to keep your preferred fighting style while gaining the damage necessary to pierce the veil.\n\n<strong>4. Risk & Reward</strong>\nThe <strong>Candy System</strong> adds a gambling element to your survival. Will that candy save your life with a burst of healing, or will it blind you in the middle of a fight? The choice is yours.\n\n<br><font size=\"14\"><strong>New Content Overview</strong></font>\n\n<strong>Entities:</strong>\n- <strong>Spectral Drifters, Bowtorns, shivers:</strong> Evolved forms of the common foe.\n- <strong>Spectral Wolves & Bears:</strong> Fast, aggressive, and glowing in the dark.\n\n<strong>Items:</strong>\n- <strong><a href=\"handbook://block-spookynights:jackolantern-north\">Jack O' Lanterns:</a></strong> To light up your base.\n- <strong>Candy Bags:</strong> Lootable treats with random effects.\n- <strong>Spectral Weapons:</strong> Tools of destruction.\n\n<br><strong>--- HANDBOOK NAVIGATION ---</strong>\n\nClick the links below to learn the details:\n\nDepending on your needs:\n- <strong><a href=\"handbook://spookynights-mechanics\">Combat Mechanics</a></strong>: Learn how to bypass damage resistance.\n- <strong><a href=\"handbook://spookynights-metallurgy\">Metallurgy Guide</a></strong>: Recipes for Spectrium and alloys.\n- <strong><a href=\"handbook://spookynights-weapons\">Weapon Stats</a></strong>: Details on the Warscythe and damage tiers.\n- <strong><a href=\"handbook://spookynights-candies\">Candy Effects</a></strong>: A list of all buffs and curses.",
+
+  "game:spookynights-guide-mechanics-title": "Spooky Nights - Spectral Resistance",
+  "game:spookynights-guide-mechanics-text": "<strong>\t\t - Spectral Resistance -</strong>\n\n Spectral entities are not bound by the same physical laws as the living. They are ethereal, causing ordinary matter to pass through them with little effect.\n\n<strong>The Resistance</strong>\nAny weapon forged from mundane materials (Copper, Bronze, Iron, Steel, Black Bronze...) will have its damage reduced by <strong>50%</strong> when striking a spectral entity. This applies to both melee attacks and projectiles (arrows/spears).\n\n<strong>Breaking the Veil</strong>\nTo hunt these creatures effectively, you must forge weapons using <strong>Spectrium</strong> or its alloys. These materials resonate with spectral energy.\n\n<strong>Damage Tiers:</strong>\n- <strong>Spectrium:</strong> Bypasses resistance entirely (100% Normal Damage).\n- <strong>Etherium:</strong> Inflicts <strong>+20% Bonus Damage</strong> to spectral entities.\n- <strong>Aetherium:</strong> Inflicts <strong>+40% Bonus Damage</strong> to spectral entities.\n\n<em>Tip: Check your weapon's tooltip. Spectral weapons display their effective spectral damage in purple text.</em>",
+
+  "game:spookynights-guide-metallurgy-title": "Spooky Nights - Metallurgy",
+  "game:spookynights-guide-metallurgy-text": "<strong>\t\t- Metallurgy -</strong>\n\nTo fight the spectral threat, you must master new metals.\n\n<strong>1. Spectrium (Tier 2)</strong>\nThe base metal for ghost hunting. It is not mined from the earth.\n- <strong>Source:</strong> Obtain <em>Spectral Hearts</em> by slaying spectral creatures.\n- <strong>Process:</strong> Crush the hearts in the crafting grid using a <strong>Hammer</strong> to obtain Nuggets.\n- <strong>Smelting:</strong> Melts at <strong>1025°C</strong>.\n\n<strong>2. Etherium (Tier 3)</strong>\nAn alloy offering superior durability.\n- <strong>Mix:</strong> 30-40% Spectrium + 60-70% Copper.\n- <strong>Smelting:</strong> Melts at <strong>1150°C</strong>.\n\n<strong>3. Aetherium (Tier 3+)</strong>\nThe ultimate spectral alloy, requiring rare materials.\n- <strong>Mix:</strong> ~40% Spectrium + ~40% Bismuth + ~20% Silver.\n- <strong>Smelting:</strong> Melts at <strong>1025°C</strong>.\n\nThese metals can be forged into Warscythes, Spears, Arrows, and Falx blades.",
+
+  "game:spookynights-guide-weapons-title": "Spooky Nights - Warscythe",
+  "game:spookynights-guide-weapons-text": "<strong>\t\t- Warscythe -</strong>\n\nWhile Spears and Arrows can be tipped with spectral metals, the <strong>Warscythe</strong> is the signature weapon of the ghost hunter.\n\n<strong>The Warscythe (Long)</strong>\nA polearm designed to keep deadly spirits at bay.\n- <strong>Reach:</strong> <strong>3.2 meters</strong> (Outranges most enemies).\n- <strong>Damage:</strong> High cutting damage.\n- <strong>Drawbacks:</strong> Being heavy and unwieldy, it reduces Walk Speed by <strong>15%</strong> and increases Hunger Rate by <strong>30%</strong> while held.\n\n<strong>Weapon Stats (Warscythe):</strong>\n- <strong><a href=\"handbook://item-spookynights:warscythe-long-spectrium\">Spectrium:</a></strong> 4.2 Dmg (550 Durability)\n- <strong><a href=\"handbook://item-spookynights:warscythe-long-etherium\">Etherium:</a></strong> 4.8 Dmg (1100 Durability)\n- <strong><a href=\"handbook://item-spookynights:warscythe-long-aetherium\">Aetherium:</a></strong> 5.5 Dmg (1500 Durability)\n\n<em>Note: Falx blades, Spears, and Arrows can also be crafted from these metals for standard handling without the Warcythe's penalties.</em>",
+
+  "game:spookynights-guide-candies-title": "Spooky Nights - Trick or Treat",
+  "game:spookynights-guide-candies-text": "<strong>\t\t- Trick or Treat -</strong>\n\nDuring your hunts, you may find <strong>Candy Bags</strong>. Hold Right-Click to open them and reveal 1 to 3 random sweets. Beware: each candy carries a curse along with its blessing.\n\n<strong>Spider Gummy (Common)</strong>\n- <strong>Treat:</strong> Grants a massive jump boost and negates fall damage for 10s.\n- <strong>Trick:</strong> Inflicts minor Poison damage (-2 hp).\n\n<strong>Mummy Candy (Common)</strong>\n- <strong>Treat:</strong> Heals 2 HP and prevents Knockback.\n- <strong>Trick:</strong> Slowness (-25%) for 45s.\n\n<strong>Ghost Caramel (Uncommon)</strong>\n- <strong>Treat:</strong> Restores Temporal Stability by 25%.\n- <strong>Trick:</strong> Weakness (-50% Damage) for 30s. Do not eat during combat!\n\n<strong>Vampire Teeth (Rare)</strong>\n- <strong>Treat:</strong> Large Heal (+6 HP).\n- <strong>Trick:</strong> Drains Temporal Stability (-30%).\n\n<strong>Shadow Cube (Rare)</strong>\nPure Chaos. Effects are unpredictable:\n- <strong>Divine (5%):</strong> Full Healing + Max Saturation + Stability.\n- <strong>Speed (20%):</strong> Super speed boost (+50%) for 45s.\n- <strong>Hallucination (30%):</strong> Your vision blurs and you hear frightening sounds.\n- <strong>Darkness (25%):</strong> Walking speed -50% and darkness (15s).\n- <strong>Fail (20%):</strong> Teleports you nearby... Generally within a 10-block radius.",
+
+  "game:item-ingot-spectrium": "Ingot (spectrium)",
+  "game:item-ingot-etherium": "Ingot (etherium)",
+  "game:item-ingot-aetherium": "Ingot (aetherium)",
+
+  "game:item-metalbit-spectrium": "Metalbit (spectrium)",
+  "game:item-metalbit-etherium": "Metalbit (etherium)",
+  "game:item-metalbit-aetherium": "Metalbit (aetherium)",
+
+  "game:item-nugget-spectrium": "Nugget (spectrium)",
+  "game:item-nugget-aetherium": "Nugget (aetherium)",
+  "game:item-nugget-etherium": "Nugget (etherium)",
+
+  "game:material-spectrium": "Spectrium",
+  "game:material-etherium": "Etherium",
+  "game:material-aetherium": "Aetherium",
+
+  "game:item-blade-falx-aetherium": "Aetherium falx",
+  "game:item-blade-falx-etherium": "Etherium falx",
+  "game:item-blade-falx-spectrium": "Spectrium falx",
+
+  "game:item-spear-generic-aetherium": "Aetherium Spear",
+  "game:item-spear-generic-etherium": "Etherium spear",
+  "game:item-spear-generic-spectrium": "Spectrium spear",
+
+  "game:item-bladehead-falx-aetherium": "Aetherium falx head",
+  "game:item-bladehead-falx-etherium": "Etherium falx head",
+  "game:item-bladehead-falx-spectrium": "Spectrium falx head",
+
+  "game:item-spearhead-aetherium": "Aetherium spear head",
+  "game:item-spearhead-etherium": "Etherium spear head",
+  "game:item-spearhead-spectrium": "Spectrium spear head",
+
+  "game:item-arrow-aetherium": "Aetherium arrow",
+  "game:item-arrow-etherium": "Etherium arrow",
+  "game:item-arrow-spectrium": "Spectrium arrow",
+
+  "game:item-arrowhead-aetherium": "Aetherium arrowhead",
+  "game:item-arrowhead-etherium": "Etherium arrowhead",
+  "game:item-arrowhead-spectrium": "Spectrium arrowhead",
+
+
+
+  "comment_2a": "//////////////////////////",
+  "comment_2b": "// spookynights: domain //",
+  "comment_2c": "//////////////////////////",
+
   "block-jackolantern-*": "Jack O' Lantern",
   "blockdesc-jackolantern-*": "A hollowed-out pumpkin with a carved face, lit from within. A classic symbol of the spooky season.",
 
