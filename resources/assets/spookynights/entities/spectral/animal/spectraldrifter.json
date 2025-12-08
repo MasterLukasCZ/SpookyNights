@@ -659,17 +659,17 @@
 					"*-tainted": 3,
 					"*-corrupt": 2,
 					"*-nightmare": 1,
-					"*-double-headed": 1
+					"*-double-headed": 0.25
 				},
 				"maxLightLevel": 14,
-				"chance": 0.5,
+				"chance": 0.25,
 				"lightLevelType": "OnlyBlockLight",
 				"groupSize": {
 					"dist": "invexp",
 					"avg": 1,
 					"var": 2
 				},
-				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:loosestones-*", "game:snowlayer-*", "game:flower-*" ],
+				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:loosestones-*", "game:flower-*" ],
 				"minYByType": {
 					"*-normal": 0.85,
 					"*-deep": 0.22,
@@ -689,8 +689,8 @@
 	},
 	"idleSoundRange": 14,
 	"sounds": {
-		"hurt": "game:creature/drifter-hurt",
+		"hurt": "creature/drifter/hurt*",
 		"death": "creature/death",
-		"idle": "game:creature/drifter-idle"
+		"idle": "creature/drifter/howl*"
 	}
 }
