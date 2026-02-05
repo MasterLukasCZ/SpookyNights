@@ -1,0 +1,69 @@
+[
+  {
+    "file": "game:itemtypes/combatoverhaul/sword.json",
+    "op": "addmerge",
+    "path": "/variantgroups/1/states",
+    "value": [ "spectrium", "etherium", "aetherium" ]
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/sword.json",
+    "op": "addmerge",
+    "path": "/attributes/OneHandedStanceByType/*-falx-*/Attack/DamageTypes/0/DamageByType",
+    "value": {
+      "*-spectrium": {
+        "DamageType": "SlashingAttack",
+        "Tier": 4,
+        "Damage": 4.5
+      },
+      "*-etherium": {
+        "DamageType": "SlashingAttack",
+        "Tier": 5,
+        "Damage": 5.2
+      },
+      "*-aetherium": {
+        "DamageType": "SlashingAttack",
+        "Tier": 6,
+        "Damage": 6
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/sword.json",
+    "op": "addmerge",
+    "path": "/durabilitybytype",
+    "value": {
+      "blade-falx-spectrium": 400,
+      "blade-falx-etherium": 900,
+      "blade-falx-aetherium": 1200
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/sword.json",
+    "op": "addmerge",
+    "path": "/attributesByType",
+    "value": {
+      "blade-falx-spectrium": {
+        "spectralDamageBonus": 1.0,
+        "ripHarvest": true
+      },
+      "blade-falx-etherium": {
+        "spectralDamageBonus": 1.2,
+        "ripHarvest": true
+      },
+      "blade-falx-aetherium": {
+        "spectralDamageBonus": 1.4,
+        "ripHarvest": true
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/sword.json",
+    "op": "addmerge",
+    "path": "/texturesByType",
+    "value": {
+      "blade-falx-spectrium": { "falxblade": { "base": "spookynights:item/resource/spectrium" } },
+      "blade-falx-etherium": { "falxblade": { "base": "spookynights:item/resource/etherium" } },
+      "blade-falx-aetherium": { "falxblade": { "base": "spookynights:item/resource/aetherium" } }
+    }
+  }
+]

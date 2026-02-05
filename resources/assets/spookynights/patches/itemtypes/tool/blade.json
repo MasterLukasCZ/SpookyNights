@@ -3,19 +3,37 @@
     "file": "game:itemtypes/tool/blade.json",
     "op": "add",
     "path": "/variantgroups/1/states/-",
-    "value": "spectrium"
+    "value": "spectrium",
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
     "op": "add",
     "path": "/variantgroups/1/states/-",
-    "value": "etherium"
+    "value": "etherium",
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
     "op": "add",
     "path": "/variantgroups/1/states/-",
-    "value": "aetherium"
+    "value": "aetherium",
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
@@ -74,7 +92,13 @@
           }
         }
       }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
@@ -84,7 +108,13 @@
       "blade-falx-spectrium": { "falxblade": { "base": "spookynights:item/resource/spectrium" } },
       "blade-falx-etherium": { "falxblade": { "base": "spookynights:item/resource/etherium" } },
       "blade-falx-aetherium": { "falxblade": { "base": "spookynights:item/resource/aetherium" } }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
@@ -94,7 +124,13 @@
       "blade-falx-spectrium": 3.8,
       "blade-falx-etherium": 4.3,
       "blade-falx-aetherium": 4.8
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
@@ -103,8 +139,14 @@
     "value": {
       "*-spectrium": 2,
       "*-etherium": 3,
-      "*-aetherium":3
-    }
+      "*-aetherium": 3
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/blade.json",
@@ -114,6 +156,12 @@
       "blade-falx-spectrium": 400,
       "blade-falx-etherium": 900,
       "blade-falx-aetherium": 1200
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   }
 ]
