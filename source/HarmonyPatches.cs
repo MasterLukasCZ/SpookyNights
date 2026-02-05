@@ -13,72 +13,91 @@ namespace SpookyNights
     [HarmonyPatch]
     public class HarmonyPatches
     {
-        // PATCH 1: Melee (Swords & Spears & Falx)
+        // --- PATCH 1: MELEE WEAPONS ---
+        // Covers: Swords, Vanilla Spears, Warscythe, and any modded weapon (CO) with spectral attributes.
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Item), "GetHeldItemInfo")]
         public static void Postfix_Item_Melee(Item __instance, ItemSlot inSlot, StringBuilder dsc)
         {
-            if (__instance is ItemSpectralWeapon || __instance is ItemSpectralSpear) return;
-            if (__instance.Tool != EnumTool.Sword && __instance.Tool != EnumTool.Spear) return;
+            // 1. Detection: Is this a Spectral Weapon? (Checks Attribute "spectralDamageBonus")
+            float spectralBonus = inSlot.Itemstack.ItemAttributes?["spectralDamageBonus"].AsFloat(0f) ?? 0f;
+            bool isSpectral = spectralBonus > 0;
 
-            // GUARD: Prevent duplicates. If text exists, stop.
+            // 2. Filter: Only process if it is a Sword, Spear, or a recognized Spectral Weapon
+            if (__instance.Tool != EnumTool.Sword && __instance.Tool != EnumTool.Spear && !isSpectral) return;
+
+            // 3. Guard: Prevent duplicates
             string spectralPowerText = Lang.Get("spookynights:iteminfo-spectral-attack-power");
             if (dsc.ToString().Contains(spectralPowerText)) return;
 
-            float spectralResistance = 0.5f;
             float baseMeleeDamage = __instance.GetAttackPower(inSlot.Itemstack);
 
             if (baseMeleeDamage > 0)
             {
                 var lines = dsc.ToString().Split('\n').ToList();
 
-                // SEARCH STRATEGY: Numeric Search (Most Robust)
-                // Instead of looking for "Attack Power" text which varies by language/formatting,
-                // we look for the line containing the damage number (e.g. "3.8" or "3,8").
+                // 4. Find the line with the damage number
                 string numStrDot = baseMeleeDamage.ToString("0.#", CultureInfo.InvariantCulture);
                 string numStrComma = baseMeleeDamage.ToString("0.#", CultureInfo.GetCultureInfo("fr-FR"));
-
-                // We look for the specific line index
                 int meleeIndex = lines.FindIndex(line => line.Contains(numStrDot) || line.Contains(numStrComma));
 
                 if (meleeIndex != -1)
                 {
-                    float damageWithMalus = baseMeleeDamage * spectralResistance;
-                    // Insert the spectral damage line just below the normal damage
-                    string spectralLine = $"<font color=\"#ff8080\">{spectralPowerText}-{damageWithMalus:0.##} hp</font>";
+                    // 5. Logic: 
+                    // - If Spectral: Show Bonus (Purple)
+                    // - If Vanilla: Show Penalty (Red)
+                    float damageValue = isSpectral ? (baseMeleeDamage * spectralBonus) : (baseMeleeDamage * 0.5f);
+                    string colorCode = isSpectral ? "#a08ee0" : "#ff8080"; 
+                    
+                    // Note: If Vanilla, we display negative value implicitly by calculation, 
+                    // but usually we want to show "Spectral Power: X hp". 
+                    // If it is a penalty, it represents the *effective* damage against ghosts.
+                    string spectralLine = $"<font color=\"{colorCode}\">{spectralPowerText}-{damageValue:0.##} hp</font>";
                     lines.Insert(meleeIndex + 1, spectralLine);
                 }
 
-                // Add Malus Footer (Swords/Falx only)
-                if (__instance.Tool == EnumTool.Sword)
+                // 6. Footer Logic
+                if (isSpectral)
                 {
-                    string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
-                    // Only add if not already present
-                    if (!lines.Any(l => l.Contains("50%")))
+                    // Show Bonus Percentage Footer (e.g. +20% Damage)
+                    if (spectralBonus > 1.001f)
                     {
-                        lines.Add(malusText);
+                        string bonusText = Lang.Get("spookynights:iteminfo-spectralbonus-simplified", ((spectralBonus - 1) * 100).ToString("0"));
+                        if (!lines.Contains(bonusText)) lines.Add(bonusText);
                     }
+
+                    // Show Stat Modifiers (Walk Speed / Hunger) - ported from ItemSpectralWeapon
+                    if (inSlot.Itemstack.ItemAttributes != null && inSlot.Itemstack.ItemAttributes.KeyExists("statModifiers"))
+                    {
+                        AddStatModifiers(inSlot.Itemstack, lines);
+                    }
+                }
+                else if (__instance.Tool == EnumTool.Sword)
+                {
+                    // Vanilla: Show Malus Explanation
+                    string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
+                    if (!lines.Any(l => l.Contains("50%"))) lines.Add(malusText);
                 }
 
                 dsc.Clear().Append(string.Join("\n", lines));
             }
         }
 
-        // PATCH 2: Ranged (Spears Only)
+        // --- PATCH 2: RANGED SPEARS ---
         [HarmonyPostfix]
         [HarmonyPatch(typeof(ItemSpear), "GetHeldItemInfo")]
         public static void Postfix_Spear_Ranged(ItemSpear __instance, ItemSlot inSlot, StringBuilder dsc)
         {
-            if (__instance is ItemSpectralSpear) return;
+            // 1. Detection
+            float spectralBonus = inSlot.Itemstack.ItemAttributes?["spectralDamageBonus"].AsFloat(0f) ?? 0f;
+            bool isSpectral = spectralBonus > 0;
 
-            // GUARD: Prevent duplicates
+            // 2. Guard
             string uniqueKey = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", "").Trim();
-            string checkStr = uniqueKey.Split(':')[0]; // Check label only
+            string checkStr = uniqueKey.Split(':')[0];
             if (dsc.ToString().Contains(checkStr)) return;
 
-            float spectralResistance = 0.5f;
             var lines = dsc.ToString().Split('\n').ToList();
-
             string vanillaRangedFormat = Lang.Get("itemdescriptor-projectile-damage").Replace("{0}", "").Trim();
             if (string.IsNullOrEmpty(vanillaRangedFormat)) vanillaRangedFormat = "piercing";
 
@@ -86,80 +105,107 @@ namespace SpookyNights
 
             if (rangedIndex != -1)
             {
-                string vanillaLine = lines[rangedIndex];
-                // Extract number using Regex to handle decimals in any locale
-                Match match = Regex.Match(vanillaLine, @"\d+([.,]\d+)?");
-
+                Match match = Regex.Match(lines[rangedIndex], @"\d+([.,]\d+)?");
                 if (match.Success)
                 {
                     string numStr = match.Value.Replace(',', '.');
                     if (float.TryParse(numStr, NumberStyles.Any, CultureInfo.InvariantCulture, out float baseThrownDamage))
                     {
-                        float thrownWithMalus = baseThrownDamage * spectralResistance;
-                        string rangedLabel = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", thrownWithMalus.ToString("0.##"));
-                        string fullRangedLine = $"<font color=\"#ff8080\">{rangedLabel}</font>";
+                        float damageValue = isSpectral ? (baseThrownDamage * spectralBonus) : (baseThrownDamage * 0.5f);
+                        string colorCode = isSpectral ? "#a08ee0" : "#ff8080";
 
-                        lines.Insert(rangedIndex + 1, fullRangedLine);
+                        string rangedLabel = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", damageValue.ToString("0.##"));
+                        lines.Insert(rangedIndex + 1, $"<font color=\"{colorCode}\">{rangedLabel}</font>");
                     }
                 }
             }
 
-            // Ensure footer (Check generally for the 50% text to match duplications)
-            string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
-            if (!lines.Any(l => l.Contains("50%")))
+            // Footer Logic (Vanilla Only) - Spectral footer is handled in Melee patch usually
+            if (!isSpectral)
             {
-                lines.Add(malusText);
+                string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
+                if (!lines.Any(l => l.Contains("50%"))) lines.Add(malusText);
             }
 
             dsc.Clear().Append(string.Join("\n", lines));
         }
 
-        // PATCH 3: Arrows (Vanilla)
+        // --- PATCH 3: ARROWS ---
         [HarmonyPostfix]
         [HarmonyPatch(typeof(ItemArrow), "GetHeldItemInfo")]
         public static void Postfix_Arrow(ItemArrow __instance, ItemSlot inSlot, StringBuilder dsc)
         {
-            if (__instance is ItemSpectralArrow) return;
+            // 1. Detection
+            float spectralBonus = inSlot.Itemstack.ItemAttributes?["spectralDamageBonus"].AsFloat(0f) ?? 0f;
+            bool isSpectral = spectralBonus > 0;
 
-            // GUARD: Prevent duplicates
+            // 2. Guard
             string uniqueKey = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", "").Trim();
             string checkStr = uniqueKey.Split(':')[0];
             if (dsc.ToString().Contains(checkStr)) return;
 
-            float spectralResistance = 0.5f;
-            var lines = dsc.ToString().Split('\n').ToList();
-
             float baseDamage = __instance.Attributes?["damage"].AsFloat(0f) ?? 0f;
+            // Also support "projectileDamage" attribute which some mods use
+            if (baseDamage == 0) baseDamage = __instance.Attributes?["projectileDamage"].AsFloat(0f) ?? 0f;
 
             if (baseDamage > 0)
             {
-                float damageWithMalus = baseDamage * spectralResistance;
-                string rangedLabel = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", damageWithMalus.ToString("0.##"));
-                string spectralLine = $"<font color=\"#ff8080\">{rangedLabel}</font>";
+                float damageValue = isSpectral ? (baseDamage * spectralBonus) : (baseDamage * 0.5f);
+                string colorCode = isSpectral ? "#a08ee0" : "#ff8080";
 
+                string rangedLabel = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", damageValue.ToString("0.##"));
+                string spectralLine = $"<font color=\"{colorCode}\">{rangedLabel}</font>";
+
+                var lines = dsc.ToString().Split('\n').ToList();
                 string numStrDot = baseDamage.ToString(CultureInfo.InvariantCulture);
                 string numStrComma = baseDamage.ToString(CultureInfo.GetCultureInfo("fr-FR"));
 
-                // Find the line containing the damage number
                 int index = lines.FindLastIndex(line => line.Contains(numStrDot) || line.Contains(numStrComma));
+                
+                if (index != -1) lines.Insert(index + 1, spectralLine);
+                else lines.Add(spectralLine);
 
-                if (index != -1)
+                // Footer Logic
+                if (isSpectral)
                 {
-                    lines.Insert(index + 1, spectralLine);
+                    if (spectralBonus > 1.001f)
+                    {
+                        string bonusText = Lang.Get("spookynights:iteminfo-spectralbonus-simplified", ((spectralBonus - 1) * 100).ToString("0"));
+                        if (!lines.Contains(bonusText)) lines.Add(bonusText);
+                    }
                 }
                 else
                 {
-                    lines.Add(spectralLine);
+                    string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
+                    if (!lines.Any(l => l.Contains("50%"))) lines.Add(malusText);
                 }
-            }
 
-            string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
-            if (!lines.Any(l => l.Contains("50%")))
+                dsc.Clear().Append(string.Join("\n", lines));
+            }
+        }
+
+        // --- HELPER METHODS ---
+
+        private static void AddStatModifiers(ItemStack stack, List<string> lines)
+        {
+            var mods = stack.ItemAttributes["statModifiers"];
+            float walkMalus = mods["walkSpeed"].AsFloat(0f);
+            float hungerMalus = mods["hungerrate"].AsFloat(0f);
+
+            if (walkMalus != 0)
             {
-                lines.Add(malusText);
+                string color = walkMalus < 0 ? "#ff8080" : "#80ff80"; // Red if negative speed
+                string valStr = (walkMalus * 100).ToString("0.#");
+                string text = Lang.Get("spookynights:malus-walkspeed", valStr);
+                lines.Add($"<font color=\"{color}\">{text}</font>");
             }
-
-            dsc.Clear().Append(string.Join("\n", lines));
+            if (hungerMalus != 0)
+            {
+                string color = hungerMalus > 0 ? "#ff8080" : "#80ff80"; // Red if positive (hunger increases faster)
+                string valStr = "+" + (hungerMalus * 100).ToString("0.#");
+                string text = Lang.Get("spookynights:malus-hungerrate", valStr);
+                lines.Add($"<font color=\"{color}\">{text}</font>");
+            }
         }
     }
 }

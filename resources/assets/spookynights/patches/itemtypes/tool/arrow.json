@@ -8,16 +8,6 @@
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
-    "path": "/classByType",
-    "value": {
-      "arrow-spectrium": "ItemSpectralArrow",
-      "arrow-etherium": "ItemSpectralArrow",
-      "arrow-aetherium": "ItemSpectralArrow"
-    }
-  },
-  {
-    "file": "game:itemtypes/tool/arrow.json",
-    "op": "add",
     "path": "/shapeByType/arrow-spectrium",
     "value": { "base": "entity/nonliving/projectile/arrow/copper" }
   },

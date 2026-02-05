@@ -7,16 +7,6 @@
   },
   {
     "file": "game:itemtypes/tool/spear.json",
-    "op": "add",
-    "path": "/classByType",
-    "value": {
-      "spear-generic-spectrium": "ItemSpectralSpear",
-      "spear-generic-etherium": "ItemSpectralSpear",
-      "spear-generic-aetherium": "ItemSpectralSpear"
-    }
-  },
-  {
-    "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
     "path": "/shapeByType",
     "value": {

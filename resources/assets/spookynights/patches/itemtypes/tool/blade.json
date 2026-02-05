@@ -19,16 +19,6 @@
   },
   {
     "file": "game:itemtypes/tool/blade.json",
-    "op": "addmerge",
-    "path": "/classByType",
-    "value": {
-      "blade-*-spectrium": "ItemSpectralWeapon",
-      "blade-*-etherium": "ItemSpectralWeapon",
-      "blade-*-aetherium": "ItemSpectralWeapon"
-    }
-  },
-  {
-    "file": "game:itemtypes/tool/blade.json",
     "op": "replace",
     "path": "/attributesByType",
     "value": {
