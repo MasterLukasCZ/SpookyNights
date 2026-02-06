@@ -1,0 +1,54 @@
+[
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "addmerge",
+    "path": "/variantgroups/0/states",
+    "value": [ "spectrium", "etherium", "aetherium" ]
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "addmerge",
+    "path": "/client/texturesByType",
+    "value": {
+      "*-spectrium": { "material": { "base": "spookynights:block/metal/ingot/spectrium" } },
+      "*-etherium": { "material": { "base": "spookynights:block/metal/ingot/etherium" } },
+      "*-aetherium": { "material": { "base": "spookynights:block/metal/ingot/aetherium" } }
+    }
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "remove",
+    "path": "/client/texturesByType/*"
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "addmerge",
+    "path": "/client/texturesByType",
+    "value": {
+      "*": { "material": { "base": "game:block/metal/ingot/{material}" } }
+    }
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "addmerge",
+    "path": "/client/shapeByType",
+    "value": {
+      "*-spectrium": { "base": "combatoverhaul:ammo/arrows/insert" },
+      "*-etherium": { "base": "combatoverhaul:ammo/arrows/insert" },
+      "*-aetherium": { "base": "combatoverhaul:ammo/arrows/insert" }
+    }
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "remove",
+    "path": "/client/shapeByType/*"
+  },
+  {
+    "file": "combatoverhaul:entities/arrow.json",
+    "op": "addmerge",
+    "path": "/client/shapeByType",
+    "value": {
+      "*": { "base": "combatoverhaul:ammo/arrows/insert" }
+    }
+  }
+]

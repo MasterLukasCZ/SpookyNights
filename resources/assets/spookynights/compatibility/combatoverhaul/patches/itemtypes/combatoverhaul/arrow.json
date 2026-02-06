@@ -1,0 +1,77 @@
+[
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/variantgroups/0/states",
+    "value": [ "spectrium", "etherium", "aetherium" ]
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/behaviors/1/properties/stats/DamageStatsByType",
+    "value": {
+      "*-spectrium": {
+        "DamageType": "SlashingAttack",
+        "Damage": 4.0
+      },
+      "*-etherium": {
+        "DamageType": "SlashingAttack",
+        "Damage": 4.5
+      },
+      "*-aetherium": {
+        "DamageType": "SlashingAttack",
+        "Damage": 5.0
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/behaviors/1/properties/stats/DamageTierBonusByType",
+    "value": {
+      "*-spectrium": 0,
+      "*-etherium": 1,
+      "*-aetherium": 2
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/behaviors/1/properties/stats/DropChanceByType",
+    "value": {
+      "*-spectrium": 0.90,
+      "*-etherium": 0.95,
+      "*-aetherium": 0.98
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/shapeByType",
+    "value": {
+      "*-spectrium": { "base": "combatoverhaul:ammo/arrows/insert" },
+      "*-etherium": { "base": "combatoverhaul:ammo/arrows/insert" },
+      "*-aetherium": { "base": "combatoverhaul:ammo/arrows/insert" }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/texturesByType",
+    "value": {
+      "*-spectrium": { "material": { "base": "spookynights:item/resource/spectrium" } },
+      "*-etherium": { "material": { "base": "spookynights:item/resource/etherium" } },
+      "*-aetherium": { "material": { "base": "spookynights:item/resource/aetherium" } }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/arrow.json",
+    "op": "addmerge",
+    "path": "/attributesByType",
+    "value": {
+      "arrow-spectrium": { "spectralDamageBonus": 1.0 },
+      "arrow-etherium": { "spectralDamageBonus": 1.2 },
+      "arrow-aetherium": { "spectralDamageBonus": 1.4 }
+    }
+  }
+]
