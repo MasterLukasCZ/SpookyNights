@@ -18,6 +18,9 @@ namespace SpookyNights
         [HarmonyPatch(typeof(Item), "GetHeldItemInfo")]
         public static void Postfix_Item_Info(Item __instance, ItemSlot inSlot, StringBuilder dsc)
         {
+            // Exclude Admin items from any spectral processing
+            if (__instance.Code.Path.IndexOf("admin", StringComparison.OrdinalIgnoreCase) >= 0) return;
+            
             // 1. DATA COLLECTION
             float spectralBonus = inSlot.Itemstack.ItemAttributes?["spectralDamageBonus"].AsFloat(0f) ?? 0f;
             bool isSpectral = spectralBonus > 0;
