@@ -1,0 +1,18 @@
+[
+  {
+    "file": "combatoverhaul:entities/spear.json",
+    "op": "addmerge",
+    "path": "/variantgroups/1/states",
+    "value": [ "spectrium", "etherium", "aetherium" ]
+  },
+  {
+    "file": "combatoverhaul:entities/spear.json",
+    "op": "addmerge",
+    "path": "/client/shapeByType",
+    "value": {
+      "*-spectrium": { "base": "combatoverhaul:weapons/spears/spear-spectrium" },
+      "*-etherium": { "base": "combatoverhaul:weapons/spears/spear-etherium" },
+      "*-aetherium": { "base": "combatoverhaul:weapons/spears/spear-aetherium" }
+    }
+  }
+]

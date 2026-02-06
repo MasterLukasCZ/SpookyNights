@@ -34,7 +34,6 @@ namespace SpookyNights
                 string line = lines[i];
                 
                 // Identify damage lines
-                // We ignore "Damage:" for Spears to avoid triple-lines (One-handed and Two-handed are enough)
                 bool isDamageLine = line.IndexOf("handed", StringComparison.OrdinalIgnoreCase) >= 0 ||
                                     line.IndexOf("power", StringComparison.OrdinalIgnoreCase) >= 0 ||
                                     (line.IndexOf("Damage:", StringComparison.OrdinalIgnoreCase) >= 0 && __instance.Tool != EnumTool.Spear) ||
@@ -51,7 +50,6 @@ namespace SpookyNights
                             float spectralVal = Math.Abs(dmgVal) * (isSpectral ? spectralBonus : 0.5f);
                             string color = isSpectral ? "#a08ee0" : "#ff8080";
                             
-                            // Output format: "Label Value" (No dash, no hp)
                             lines.Insert(i + 1, $"<font color=\"{color}\">{label} {spectralVal:0.##}</font>");
                             i++; 
                         }
@@ -73,7 +71,7 @@ namespace SpookyNights
                     AddStatModifiers(inSlot.Itemstack, lines);
                 }
             }
-            else if (__instance.Tool == EnumTool.Sword)
+            else if (__instance.Tool == EnumTool.Sword || __instance.Tool == EnumTool.Spear)
             {
                 string malusText = Lang.Get("spookynights:iteminfo-spectralmalus");
                 if (!lines.Any(l => l.Contains("50%"))) lines.Add(malusText);
@@ -105,8 +103,6 @@ namespace SpookyNights
                         float val = Math.Abs(float.Parse(m.Value.Replace(',', '.'), CultureInfo.InvariantCulture));
                         float res = val * (isSpectral ? bonus : 0.5f);
                         string color = isSpectral ? "#a08ee0" : "#ff8080";
-                        
-                        // Localized string usually handles its own format, ensured no extra chars here
                         string text = Lang.Get("spookynights:iteminfo-spectral-ranged-damage", res.ToString("0.##"));
                         lines.Insert(i + 1, $"<font color=\"{color}\">{text}</font>");
                         break; 
@@ -126,11 +122,19 @@ namespace SpookyNights
         private static void AddStatModifiers(ItemStack stack, List<string> lines)
         {
             var mods = stack.ItemAttributes["statModifiers"];
-            float s = mods["walkSpeed"].AsFloat(0f);
-            float h = mods["hungerrate"].AsFloat(0f);
+            float walkMalus = mods["walkSpeed"].AsFloat(0f);
+            float hungerMalus = mods["hungerrate"].AsFloat(0f);
 
-            if (s != 0) lines.Add($"<font color=\"{(s < 0 ? "#ff8080" : "#80ff80")}\">{Lang.Get("spookynights:malus-walkspeed", (s * 100).ToString("0.#"))}</font>");
-            if (h != 0) lines.Add($"<font color=\"{(h > 0 ? "#ff8080" : "#80ff80")}\">{Lang.Get("spookynights:malus-hungerrate", "+" + (h * 100).ToString("0.#"))}</font>");
+            if (walkMalus != 0) 
+            {
+                string color = walkMalus < 0 ? "#ff8080" : "#80ff80"; 
+                lines.Add($"<font color=\"{color}\">{Lang.Get("spookynights:malus-walkspeed", (walkMalus * 100).ToString("0.#"))}</font>");
+            }
+            if (hungerMalus != 0) 
+            {
+                string color = hungerMalus > 0 ? "#ff8080" : "#80ff80"; 
+                lines.Add($"<font color=\"{color}\">{Lang.Get("spookynights:malus-hungerrate", "+" + (hungerMalus * 100).ToString("0.#"))}</font>");
+            }
         }
     }
 }
