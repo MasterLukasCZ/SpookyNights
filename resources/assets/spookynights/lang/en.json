@@ -227,10 +227,10 @@
   "item-spectralarrow-aetherium": "Spectral Arrow (Aetherium)",
   "itemdesc-spectralarrow-*": "Forged with spectral essence",
 
-  "iteminfo-spectralbonus-simplified": "<font color=\"#a08ee0\">+{0}% bonus damage vs spectral creatures.</font>",
-  "iteminfo-spectralmalus": "<font color=\"#ff8080\">-50% damage penalty against spectral creatures.</font>",
+  "iteminfo-spectralbonus-simplified": "+{0}% bonus damage vs spectral creatures.",
+  "iteminfo-spectralmalus": "-50% damage penalty against spectral creatures.",
   "iteminfo-spectral-attack-power": "Spectral attack power:",
-  "iteminfo-spectral-ranged-damage": "Spectral piercing damage: {0} hp",
+  "iteminfo-spectral-ranged-damage": "Spectral piercing damage: {0}",
 
   "block-warscythemold-black-fired-warscythe-long": "Black ceramic long warscythe mold",
   "block-warscythemold-blue-fired-warscythe-long": "Blue ceramic long warscythe mold",
