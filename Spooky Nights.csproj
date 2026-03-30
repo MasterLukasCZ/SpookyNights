@@ -80,6 +80,7 @@
     <PackageReference Include="VSImGui" Version="0.0.6" />
     <Reference Include="Vintagestory">
       <HintPath>C:\Jeux\Vintage Story\v1.21\Vintagestory.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <!-- Vintage Story libraries -->
     <Reference Include="VintagestoryLib" HintPath="$(GameDirectory)/VintagestoryLib.dll" Private="false" />
