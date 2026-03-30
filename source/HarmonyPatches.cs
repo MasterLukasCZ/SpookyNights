@@ -19,18 +19,20 @@ namespace SpookyNights
       if (__instance.Code == null || inSlot.Itemstack == null) return;
       if (__instance.Code.Path.Contains("admin")) return;
 
-      // 1. Retrieve the spectral bonus from attributes
       float spectralBonus = inSlot.Itemstack.ItemAttributes?["spectralDamageBonus"].AsFloat(0f) ?? 0f;
       bool isSpectral = spectralBonus > 0;
+
+      // Comprehensive detection of all weapon types in the mod
       bool isArrow = __instance.Code.Path.Contains("arrow");
       bool isClubOrMace = __instance.Code.Path.Contains("club") || __instance.Code.Path.Contains("mace");
+      bool isSlingOrAmmo = __instance.Code.Path.Contains("sling") || __instance.Code.Path.Contains("bullet") ||
+                           __instance.Code.Path.Contains("stone") || __instance.Code.Path.Contains("pellet");
+      bool isScythe = __instance.Code.Path.Contains("scythe");
 
-      // 2. Filter allowed tools (Added Clubs and Maces)
+      // 2. Filter allowed tools
       if (__instance.Tool != EnumTool.Sword &&
           __instance.Tool != EnumTool.Spear &&
-          !isSpectral &&
-          !isArrow &&
-          !isClubOrMace) return;
+          !isSpectral && !isArrow && !isClubOrMace && !isSlingOrAmmo && !isScythe) return;
 
       string currentText = dsc.ToString();
       string labelMelee = Lang.Get("spookynights:iteminfo-spectral-attack-power");
@@ -45,26 +47,21 @@ namespace SpookyNights
 
       var oldLines = currentText.Split(new[] { "\n", "\r\n" }, StringSplitOptions.None);
       var finalLines = new List<string>();
-
       bool bonusAdded = false;
       string bonusMsg = Lang.Get("spookynights:iteminfo-spectralbonus-simplified", ((spectralBonus - 1) * 100).ToString("0"));
 
-      // 4. Parse existing lines
       foreach (var line in oldLines)
       {
         if (string.IsNullOrWhiteSpace(line)) continue;
-
         if (line.IndexOf("spectral", StringComparison.OrdinalIgnoreCase) >= 0 ||
-            line.IndexOf("bonus damage", StringComparison.OrdinalIgnoreCase) >= 0)
-        {
-          continue;
-        }
+            line.IndexOf("bonus damage", StringComparison.OrdinalIgnoreCase) >= 0) continue;
 
         string cleaned = line.Replace("-", "").Replace(" hp", "").Replace("hp", "").Trim();
 
+        // Ranged detection for Slings and Arrows
         bool isRangedStat = line.IndexOf("piercing", StringComparison.OrdinalIgnoreCase) >= 0 ||
                             line.IndexOf("thrown", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                            (isArrow && line.IndexOf("Damage:", StringComparison.OrdinalIgnoreCase) >= 0);
+                            ((isArrow || isSlingOrAmmo) && line.IndexOf("Damage:", StringComparison.OrdinalIgnoreCase) >= 0);
 
         if (isRangedStat && isSpectral && !bonusAdded && spectralBonus > 1.001f)
         {
@@ -74,7 +71,7 @@ namespace SpookyNights
           bonusAdded = true;
         }
 
-        // isDmgLine will perfectly catch the "One-handed" and "Two-handed" lines of your maces!
+        // isDmgLine will catch "One-handed", "Two-handed", and Ranged stats
         bool isDmgLine = line.IndexOf("handed", StringComparison.OrdinalIgnoreCase) >= 0 ||
                          line.IndexOf("power", StringComparison.OrdinalIgnoreCase) >= 0 ||
                          isRangedStat;
@@ -82,7 +79,6 @@ namespace SpookyNights
         if (isDmgLine)
         {
           finalLines.Add(cleaned);
-
           Match m = Regex.Match(line, @"\b\d+([.,]\d+)?\b");
           if (m.Success)
           {
@@ -90,7 +86,6 @@ namespace SpookyNights
             {
               float res = dmg * (isSpectral ? spectralBonus : 0.5f);
               string color = isSpectral ? "#a08ee0" : "#ff8080";
-
               string specLine = isRangedStat
                   ? Lang.Get("spookynights:iteminfo-spectral-ranged-damage", res.ToString("0.##"))
                   : $"{labelMelee} {res.ToString("0.##")}";
@@ -99,39 +94,31 @@ namespace SpookyNights
             }
           }
         }
-        else
-        {
-          finalLines.Add(cleaned);
-        }
+        else { finalLines.Add(cleaned); }
 
-        if (line.IndexOf("Attack range", StringComparison.OrdinalIgnoreCase) >= 0)
+        // Combat Overhaul range display fix
+        if (line.IndexOf("Attack range", StringComparison.OrdinalIgnoreCase) >= 0 ||
+            line.IndexOf("MaxReach", StringComparison.OrdinalIgnoreCase) >= 0)
         {
           finalLines.Add("");
         }
       }
 
-      // 5. Append footers
+      // Footer handling
       if (!bonusAdded)
       {
         finalLines.Add("");
         if (isSpectral)
         {
-          if (spectralBonus > 1.001f)
-            finalLines.Add($"<font color=\"#a08ee0\">{bonusMsg}</font>");
-
+          if (spectralBonus > 1.001f) finalLines.Add($"<font color=\"#a08ee0\">{bonusMsg}</font>");
           if (inSlot.Itemstack.ItemAttributes?.KeyExists("statModifiers") == true)
           {
             finalLines.Add("");
             AddStatModifiers(inSlot.Itemstack, finalLines);
           }
         }
-        else
-        {
-          finalLines.Add($"<font color=\"#ff8080\">{Lang.Get("spookynights:iteminfo-spectralmalus")}</font>");
-        }
+        else { finalLines.Add($"<font color=\"#ff8080\">{Lang.Get("spookynights:iteminfo-spectralmalus")}</font>"); }
       }
-
-      // 6. Rewrite the stringbuilder
       dsc.Clear().Append(string.Join("\n", finalLines));
     }
 

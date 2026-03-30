@@ -1,12 +1,22 @@
 [
   {
-    "file": "spookynights:itemtypes/tool/warscyhte.json",
+    "file": "spookynights:itemtypes/tool/warscythe.json",
     "op": "addmerge",
     "path": "/class",
     "value": "CombatOverhaul:MeleeWeapon"
   },
   {
-    "file": "spookynights:itemtypes/tool/warscyhte.json",
+    "file": "spookynights:itemtypes/tool/warscythe.json",
+    "op": "addmerge",
+    "path": "/attributesByType",
+    "value": {
+      "warscythe-long-spectrium": { "spectralDamageBonus": 1.0 },
+      "warscythe-long-etherium": { "spectralDamageBonus": 1.2 },
+      "warscythe-long-aetherium": { "spectralDamageBonus": 1.4 }
+    }
+  },
+  {
+    "file": "spookynights:itemtypes/tool/warscythe.json",
     "op": "addmerge",
     "path": "/attributes/TwoHandedStance",
     "value": {
@@ -25,17 +35,17 @@
         "DamageTypes": [
           {
             "DamageByType": {
-              "warscythe-long-spectrium": {
+              "*-spectrium": {
                 "DamageType": "SlashingAttack",
                 "Tier": 3,
                 "Damage": 4.2
               },
-              "warscythe-long-etherium": {
+              "*-etherium": {
                 "DamageType": "SlashingAttack",
                 "Tier": 4,
                 "Damage": 4.8
               },
-              "warscythe-long-aetherium": {
+              "*-aetherium": {
                 "DamageType": "SlashingAttack",
                 "Tier": 5,
                 "Damage": 5.5
@@ -54,7 +64,7 @@
     }
   },
   {
-    "file": "spookynights:itemtypes/tool/warscyhte.json",
+    "file": "spookynights:itemtypes/tool/warscythe.json",
     "op": "addmerge",
     "path": "/attributes/OneHandedStance",
     "value": {
