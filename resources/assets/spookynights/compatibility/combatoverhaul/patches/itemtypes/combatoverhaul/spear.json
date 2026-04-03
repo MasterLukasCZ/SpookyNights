@@ -1,0 +1,152 @@
+[
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/variantgroups/1/states",
+    "value": [ "spectrium", "etherium", "aetherium" ]
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/attributes/OneHandedStance/Attack/DamageTypes/0/DamageByType",
+    "value": {
+      "*-spectrium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 3,
+        "Damage": 4.0
+      },
+      "*-etherium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 4,
+        "Damage": 4.8
+      },
+      "*-aetherium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 5,
+        "Damage": 5.5
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "remove",
+    "path": "/attributes/OneHandedStance/Attack/DamageTypes/0/DamageByType/*"
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/attributes/OneHandedStance/Attack/DamageTypes/0/DamageByType",
+    "value": {
+      "*": {
+        "DamageType": "PiercingAttack",
+        "Tier": 1,
+        "Damage": 2
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/attributes/TwoHandedStance/Attack/DamageTypes/0/DamageByType",
+    "value": {
+      "*-spectrium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 3,
+        "Damage": 5.5
+      },
+      "*-etherium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 4,
+        "Damage": 6.5
+      },
+      "*-aetherium": {
+        "DamageType": "PiercingAttack",
+        "Tier": 5,
+        "Damage": 7.5
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "remove",
+    "path": "/attributes/TwoHandedStance/Attack/DamageTypes/0/DamageByType/*"
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/attributes/TwoHandedStance/Attack/DamageTypes/0/DamageByType",
+    "value": {
+      "*": {
+        "DamageType": "PiercingAttack",
+        "Tier": 1,
+        "Damage": 4
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/durabilitybytype",
+    "value": {
+      "*-spectrium": 350,
+      "*-etherium": 600,
+      "*-aetherium": 900
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "remove",
+    "path": "/durabilitybytype/*"
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/durabilitybytype",
+    "value": {
+      "*": 100
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/attributesByType",
+    "value": {
+      "*-spectrium": { "spectralDamageBonus": 1.0 },
+      "*-etherium": { "spectralDamageBonus": 1.2 },
+      "*-aetherium": { "spectralDamageBonus": 1.4 }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/shapeByType",
+    "value": {
+      "*-spectrium": { "base": "combatoverhaul:weapons/spears/spear-iron" },
+      "*-etherium": { "base": "combatoverhaul:weapons/spears/spear-iron" },
+      "*-aetherium": { "base": "combatoverhaul:weapons/spears/spear-iron" }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "remove",
+    "path": "/shapeByType/*"
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/shapeByType",
+    "value": {
+      "*": { "base": "combatoverhaul:weapons/spears/spear-{material}" }
+    }
+  },
+  {
+    "file": "game:itemtypes/combatoverhaul/spear.json",
+    "op": "addmerge",
+    "path": "/texturesByType",
+    "value": {
+      "*-spectrium": { "head": { "base": "spookynights:item/resource/spectrium" } },
+      "*-etherium": { "head": { "base": "spookynights:item/resource/etherium" } },
+      "*-aetherium": { "head": { "base": "spookynights:item/resource/aetherium" } }
+    }
+  }
+]

@@ -10,7 +10,7 @@ namespace SpookyNights
 
     public class ServerConfig
     {
-        public string? Version { get; set; } = "1.7.1";
+        public string? Version { get; set; } = "1.7.2";
 
         // Global Toggle for Candy System
         public bool EnableCandyLoot { get; set; } = true;
@@ -27,7 +27,7 @@ namespace SpookyNights
         public string NightTimeMode { get; set; } = "Auto";
         public float NightStartHour { get; set; } = 20f;
         public float NightEndHour { get; set; } = 6f;
-        public int LightLevelThreshold { get; set; } = 7;
+        public int LightLevelThreshold { get; set; } = 14;
 
         public List<int> AllowedSpawnMonths { get; set; } = new List<int>();
         public bool SpawnOnlyOnLastDayOfMonth { get; set; } = false;

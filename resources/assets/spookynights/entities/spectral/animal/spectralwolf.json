@@ -484,8 +484,8 @@
 				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-*", "game:flower-*" ],
 				"minTemp": -30,
 				"maxTemp": 40,
-				"minRain": 0.0,
-				"minForest": 0.0,
+				"minRain": 0.1,
+				"minForest": 0.5,
 				"companions": [ "spectralwolf-eurasian-adult-female" ]
 			}
 		}

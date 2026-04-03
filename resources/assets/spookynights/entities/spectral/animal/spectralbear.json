@@ -361,12 +361,25 @@
       }
     ],
     "spawnconditions": {
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.007,
+          "var": 0
+        },
+        "tryOnlySurface": true,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 1
+        },
+        "insideBlockCodes": [ "air", "tallgrass-*", "snowlayer-*", "flower-*" ]
+      },
       "runtime": {
         "group": "hostile",
         "tryOnlySurface": true,
         "chanceByType": {
-          "*-brown-*-*": 0.016,
-          "*-giant-*-*": 0.005
+          "*-brown-*-*": 0.00004,
+          "*-giant-*-*": 0.00001
         },
         "maxQuantityByType": {
           "*-brown-*-*": 1,
@@ -381,14 +394,14 @@
         },
         "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-*", "game:flower-*" ],
         "climate": {
-          "minForest": 0.2,
-          "minRain": 0.3
+          "minForest": 0.3,
+          "minRain": 0.25
         }
       }
     }
   },
   "sounds": {
-    "hurt": "creature/bear/hurt",
+    "hurt": "creature/bear/hurt*",
     "death": "creature/death",
     "idle": "creature/bear/howl*"
   },

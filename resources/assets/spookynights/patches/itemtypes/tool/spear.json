@@ -3,17 +3,13 @@
     "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
     "path": "/variantgroups/1/states",
-    "value": [ "spectrium", "etherium", "aetherium" ]
-  },
-  {
-    "file": "game:itemtypes/tool/spear.json",
-    "op": "add",
-    "path": "/classByType",
-    "value": {
-      "spear-generic-spectrium": "ItemSpectralSpear",
-      "spear-generic-etherium": "ItemSpectralSpear",
-      "spear-generic-aetherium": "ItemSpectralSpear"
-    }
+    "value": [ "spectrium", "etherium", "aetherium" ],
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -23,7 +19,13 @@
       "spear-generic-spectrium": { "base": "game:item/tool/spear/spectrium" },
       "spear-generic-etherium": { "base": "game:item/tool/spear/etherium" },
       "spear-generic-aetherium": { "base": "game:item/tool/spear/aetherium" }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -41,7 +43,13 @@
       "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze)": { "material": { "base": "block/metal/ingot/{material}" } },
       "spear-generic-ornate*": {},
       "spear-generic-*": { "material": { "base": "item/tool/material/{material}" } }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -51,7 +59,13 @@
       "spear-generic-spectrium": 2.8,
       "spear-generic-etherium": 3.3,
       "spear-generic-aetherium": 4
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
 
   {
@@ -62,7 +76,13 @@
       "*-spectrium": 5.75,
       "*-etherium": 6.5,
       "*-aetherium": 8
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -72,7 +92,13 @@
       "*-spectrium": 0,
       "*-etherium": 0,
       "*-aetherium": 0
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -82,7 +108,13 @@
       "spear-generic-spectrium": 250,
       "spear-generic-etherium": 450,
       "spear-generic-aetherium": 600
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -92,6 +124,12 @@
       "spear-generic-spectrium": { "spectralDamageBonus": 1.0 },
       "spear-generic-etherium": { "spectralDamageBonus": 1.2 },
       "spear-generic-aetherium": { "spectralDamageBonus": 1.4 }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   }
 ]

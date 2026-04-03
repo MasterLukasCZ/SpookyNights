@@ -3,53 +3,85 @@
     "file": "game:itemtypes/tool/arrow.json",
     "op": "addmerge",
     "path": "/variantgroups/0/states",
-    "value": [ "spectrium", "etherium", "aetherium" ]
-  },
-  {
-    "file": "game:itemtypes/tool/arrow.json",
-    "op": "add",
-    "path": "/classByType",
-    "value": {
-      "arrow-spectrium": "ItemSpectralArrow",
-      "arrow-etherium": "ItemSpectralArrow",
-      "arrow-aetherium": "ItemSpectralArrow"
-    }
+    "value": [ "spectrium", "etherium", "aetherium" ],
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/shapeByType/arrow-spectrium",
-    "value": { "base": "entity/nonliving/projectile/arrow/copper" }
+    "value": { "base": "entity/nonliving/projectile/arrow/copper" },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/shapeByType/arrow-etherium",
-    "value": { "base": "entity/nonliving/projectile/arrow/copper" }
+    "value": { "base": "entity/nonliving/projectile/arrow/copper" },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/shapeByType/arrow-aetherium",
-    "value": { "base": "entity/nonliving/projectile/arrow/copper" }
+    "value": { "base": "entity/nonliving/projectile/arrow/copper" },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/texturesByType/arrow-spectrium",
-    "value": { "material": { "base": "spookynights:item/resource/spectrium" } }
+    "value": { "material": { "base": "spookynights:item/resource/spectrium" } },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/texturesByType/arrow-etherium",
-    "value": { "material": { "base": "spookynights:item/resource/etherium" } }
+    "value": { "material": { "base": "spookynights:item/resource/etherium" } },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
     "op": "add",
     "path": "/texturesByType/arrow-aetherium",
-    "value": { "material": { "base": "spookynights:item/resource/aetherium" } }
+    "value": { "material": { "base": "spookynights:item/resource/aetherium" } },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   },
   {
     "file": "game:itemtypes/tool/arrow.json",
@@ -74,6 +106,12 @@
         "spectralDamageBonus": 1.4,
         "spectralRangedDamage": 4.0
       }
-    }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
   }
 ]

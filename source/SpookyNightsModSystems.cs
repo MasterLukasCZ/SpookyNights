@@ -105,10 +105,10 @@ namespace SpookyNights
         {
             base.Start(api);
             new Harmony("fr.laerinok.spookynights").PatchAll();
+            
             api.RegisterEntityBehaviorClass("proximitywarning", typeof(EntityBehaviorProximityWarning));
-            api.RegisterItemClass("ItemSpectralArrow", typeof(ItemSpectralArrow));
-            api.RegisterItemClass("ItemSpectralSpear", typeof(ItemSpectralSpear));
-            api.RegisterItemClass("ItemSpectralWeapon", typeof(ItemSpectralWeapon));
+            
+            // Classes for items removed to support Harmony injection & Compatibility
             api.RegisterItemClass("ItemCandyBag", typeof(ItemCandyBag));
             api.RegisterItemClass("ItemSpookyCandy", typeof(ItemSpookyCandy));
 
@@ -189,8 +189,6 @@ namespace SpookyNights
 
             // "The Doorman" : Checks conditions BEFORE spawn
             api.Event.OnTrySpawnEntity += OnTrySpawnEntity;
-
-            // Note: OnEntitySpawn removed as requested to let player see the mob before it dies (if invalid)
 
             api.Event.OnEntityLoaded += OnEntityLoaded;
 

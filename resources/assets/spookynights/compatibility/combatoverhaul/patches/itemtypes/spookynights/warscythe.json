@@ -1,0 +1,76 @@
+[
+  {
+    "file": "spookynights:itemtypes/tool/warscythe.json",
+    "op": "addmerge",
+    "path": "/class",
+    "value": "CombatOverhaul:MeleeWeapon"
+  },
+  {
+    "file": "spookynights:itemtypes/tool/warscythe.json",
+    "op": "addmerge",
+    "path": "/attributesByType",
+    "value": {
+      "warscythe-long-spectrium": { "spectralDamageBonus": 1.0 },
+      "warscythe-long-etherium": { "spectralDamageBonus": 1.2 },
+      "warscythe-long-aetherium": { "spectralDamageBonus": 1.4 }
+    }
+  },
+  {
+    "file": "spookynights:itemtypes/tool/warscythe.json",
+    "op": "addmerge",
+    "path": "/attributes/TwoHandedStance",
+    "value": {
+      "CanAttack": true,
+      "CanParry": true,
+      "CanBlock": false,
+      "CanSprint": true,
+      "SpeedPenalty": 0,
+      "AttackCooldownMs": 1000,
+      "Attack": {
+        "StopOnTerrainHit": false,
+        "StopOnEntityHit": false,
+        "CollideWithTerrain": true,
+        "MaxReach": 3.2,
+        "StaminaCost": 18,
+        "DamageTypes": [
+          {
+            "DamageByType": {
+              "*-spectrium": {
+                "DamageType": "SlashingAttack",
+                "Tier": 3,
+                "Damage": 4.2
+              },
+              "*-etherium": {
+                "DamageType": "SlashingAttack",
+                "Tier": 4,
+                "Damage": 4.8
+              },
+              "*-aetherium": {
+                "DamageType": "SlashingAttack",
+                "Tier": 5,
+                "Damage": 5.5
+              }
+            },
+            "Knockback": 1.5,
+            "DurabilityDamage": 1,
+            "Collider": [ 0, 0, 0.5, 3.2, 0, 0.5 ]
+          }
+        ]
+      },
+      "AttackHitSound": "game:sounds/thud",
+      "AttackAnimation": { "Main": [ "combatoverhaul:sword-long-slash-2h" ] },
+      "ReadyAnimation": "combatoverhaul:sword-long-ready",
+      "IdleAnimation": "combatoverhaul:sword-long-idle"
+    }
+  },
+  {
+    "file": "spookynights:itemtypes/tool/warscythe.json",
+    "op": "addmerge",
+    "path": "/attributes/OneHandedStance",
+    "value": {
+      "CanAttack": false,
+      "ReadyAnimation": "combatoverhaul:sword-long-ready",
+      "IdleAnimation": "combatoverhaul:sword-long-idle"
+    }
+  }
+]
