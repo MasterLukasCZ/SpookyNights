@@ -144,9 +144,9 @@
     "op": "addmerge",
     "path": "/texturesByType",
     "value": {
-      "*-spectrium": { "material": { "base": "spookynights:item/resource/spectrium" } },
-      "*-etherium": { "material": { "base": "spookynights:item/resource/etherium" } },
-      "*-aetherium": { "material": { "base": "spookynights:item/resource/aetherium" } }
+      "*-spectrium": { "head": { "base": "spookynights:item/resource/spectrium" } },
+      "*-etherium": { "head": { "base": "spookynights:item/resource/etherium" } },
+      "*-aetherium": { "head": { "base": "spookynights:item/resource/aetherium" } }
     }
   }
 ]
