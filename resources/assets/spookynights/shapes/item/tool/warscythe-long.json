@@ -11,7 +11,7 @@
 		"warscytheblade": [16,16]
 	},
 	"textures": {
-		"handle": "game:item/tool/material/wood",
+		"handle": "game:item/tool/handle",
 		"warscytheblade": "item/resource/spectrium"
 	},
 	"elements": [

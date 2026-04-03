@@ -1,146 +1,44 @@
 [
   {
-    "_comment": "Removes spectrium variant for metalplate.",
+    "file": "game:itemtypes/resource/metalplate.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-spectrium" ],
-    "file": "game:itemtypes/resource/metalplate.json"
+    "value": [ "*-spectrium", "*-etherium", "*-aetherium" ]
   },
   {
-    "_comment": "Removes spectrium variant for metalscale.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-spectrium",
-    "file": "game:itemtypes/resource/metalscale.json"
-  },
-  {
-    "_comment": "Removes spectrium variant for metallamellae.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-spectrium",
-    "file": "game:itemtypes/resource/metallamellae.json"
-  },
-  {
-    "_comment": "Removes spectrium variant for metalchain.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-spectrium",
-    "file": "game:itemtypes/resource/metalchain.json"
-  },
-  {
-    "_comment": "Removes spectrium variant for metalsheet.",
+    "file": "game:itemtypes/resource/metalscale.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-spectrium-*" ],
-    "file": "game:blocktypes/metal/sheet.json"
+    "value": [ "*-spectrium", "*-etherium", "*-aetherium" ]
   },
   {
-    "_comment": "Removes spectrium variant for metalblock.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-spectrium",
-    "file": "game:blocktypes/metal/metalblock.json"
-  },
-  {
-    "_comment": "Removes etherium variant for metalplate.",
+    "file": "game:itemtypes/resource/metallamellae.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-etherium" ],
-    "file": "game:itemtypes/resource/metalplate.json"
+    "value": [ "*-spectrium", "*-etherium", "*-aetherium" ]
   },
   {
-    "_comment": "Removes etherium variant for metalscale.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-etherium",
-    "file": "game:itemtypes/resource/metalscale.json"
-  },
-  {
-    "_comment": "Removes etherium variant for metallamellae.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-etherium",
-    "file": "game:itemtypes/resource/metallamellae.json"
-  },
-  {
-    "_comment": "Removes etherium variant for metalchain.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-etherium",
-    "file": "game:itemtypes/resource/metalchain.json"
-  },
-  {
-    "_comment": "Removes etherium variant for metalsheet.",
+    "file": "game:itemtypes/resource/metalchain.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-etherium-*" ],
-    "file": "game:blocktypes/metal/sheet.json"
+    "value": [ "*-spectrium", "*-etherium", "*-aetherium" ]
   },
   {
-    "_comment": "Removes etherium variant for metalblock.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-etherium",
-    "file": "game:blocktypes/metal/metalblock.json"
-  },
-  {
-    "_comment": "Removes aetherium variant for metalplate.",
+    "file": "game:blocktypes/metal/sheet.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-aetherium" ],
-    "file": "game:itemtypes/resource/metalplate.json"
+    "value": [ "*-spectrium-*", "*-etherium-*", "*-aetherium-*" ]
   },
   {
-    "_comment": "Removes aetherium variant for metalscale.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-aetherium",
-    "file": "game:itemtypes/resource/metalscale.json"
-  },
-  {
-    "_comment": "Removes aetherium variant for metallamellae.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-aetherium",
-    "file": "game:itemtypes/resource/metallamellae.json"
-  },
-  {
-    "_comment": "Removes aetherium variant for metalchain.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-aetherium",
-    "file": "game:itemtypes/resource/metalchain.json"
-  },
-  {
-    "_comment": "Removes aetherium variant for metalsheet.",
+    "file": "game:blocktypes/metal/metalblock.json",
     "enabled": true,
     "op": "addmerge",
     "path": "/skipVariants",
-    "value": [ "*-aetherium-*" ],
-    "file": "game:blocktypes/metal/sheet.json"
-  },
-  {
-    "_comment": "Removes aetherium variant for metalblock.",
-    "enabled": true,
-    "op": "addmerge",
-    "path": "/skipVariants/-",
-    "value": "*-aetherium",
-    "file": "game:blocktypes/metal/metalblock.json"
+    "value": [ "*-spectrium", "*-etherium", "*-aetherium" ]
   }
 ]

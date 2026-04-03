@@ -19,15 +19,15 @@
   },
   "texturesByType": {
     "warscythe-long-spectrium": {
-      "handle": { "base": "game:item/tool/material/handle" },
+      "handle": { "base": "game:item/tool/handle" },
       "warscytheblade": { "base": "item/resource/spectrium" }
     },
     "warscythe-long-etherium": {
-      "handle": { "base": "game:item/tool/material/handle" },
+      "handle": { "base": "game:item/tool/handle" },
       "warscytheblade": { "base": "item/resource/etherium" }
     },
     "warscythe-long-aetherium": {
-      "handle": { "base": "game:item/tool/material/handle" },
+      "handle": { "base": "game:item/tool/handle" },
       "warscytheblade": { "base": "item/resource/aetherium" }
     }
   },

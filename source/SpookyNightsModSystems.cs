@@ -94,7 +94,7 @@ namespace SpookyNights
                     foreach (string variant in variants)
                     {
                         AssetLocation blockCode = new AssetLocation("spookynights", "jackolantern-" + variant);
-                        Block block = api.World.GetBlock(blockCode);
+                        Block? block = api.World.GetBlock(blockCode);
                         if (block != null) { block.ParticleProperties = null; }
                     }
                 }
@@ -231,7 +231,7 @@ namespace SpookyNights
         private void HandleSpectralDeath(Entity entity)
         {
             int particleColor = GetEntityGlowColor(entity);
-            SpawnSpectralParticles(entity.ServerPos.XYZ, particleColor);
+            SpawnSpectralParticles(entity.Pos.XYZ, particleColor);
 
             if (entity.Properties.Attributes?["spectralDrops"]?.Token is JObject dropTable)
             {
@@ -243,7 +243,7 @@ namespace SpookyNights
                         {
                             foreach (var dropToken in drops)
                             {
-                                TrySpawnDrop(dropToken, entity.ServerPos.XYZ);
+                                TrySpawnDrop(dropToken, entity.Pos.XYZ);
                             }
                         }
                         break;
@@ -351,7 +351,7 @@ namespace SpookyNights
                 ItemStack? stack = null;
                 if (type == "item")
                 {
-                    Item item = sapi.World.GetItem(new AssetLocation(code));
+                    Item? item = sapi.World.GetItem(new AssetLocation(code));
                     if (item != null)
                     {
                         if (item is ItemStackRandomizer randItem)
@@ -370,7 +370,7 @@ namespace SpookyNights
                 }
                 else
                 {
-                    Block block = sapi.World.GetBlock(new AssetLocation(code));
+                    Block? block = sapi.World.GetBlock(new AssetLocation(code));
                     if (block != null) stack = new ItemStack(block, stackSize);
                 }
                 if (stack != null) sapi.World.SpawnItemEntity(stack, pos);
@@ -415,7 +415,7 @@ namespace SpookyNights
             if (amount <= 0) return;
 
             ItemStack stack = new ItemStack(sapi.World.GetItem(new AssetLocation("spookynights", "candybag")), amount);
-            sapi.World.SpawnItemEntity(stack, entity.ServerPos.XYZ);
+            sapi.World.SpawnItemEntity(stack, entity.Pos.XYZ);
         }
 
         // --- THE DOORMAN: SPAWNING LOGIC ---
@@ -569,7 +569,7 @@ namespace SpookyNights
                         }
                         else
                         {
-                            BlockPos pos = entity.ServerPos.AsBlockPos;
+                            BlockPos pos = entity.Pos.AsBlockPos;
                             int sunLight = sapi.World.BlockAccessor.GetLightLevel(pos, EnumLightLevelType.TimeOfDaySunLight);
                             int blockLight = sapi.World.BlockAccessor.GetLightLevel(pos, EnumLightLevelType.OnlyBlockLight);
                             int actualLight = Math.Max(sunLight, blockLight);
@@ -583,7 +583,7 @@ namespace SpookyNights
                     {
                         sapi.World.SpawnParticles(10,
                             ColorUtil.ToRgba(100, 100, 100, 100),
-                            entity.ServerPos.XYZ, entity.ServerPos.XYZ.AddCopy(0, 1, 0),
+                            entity.Pos.XYZ, entity.Pos.XYZ.AddCopy(0, 1, 0),
                             new Vec3f(-0.5f, 0, -0.5f), new Vec3f(0.5f, 1, 0.5f),
                             1.0f, 1.0f);
 

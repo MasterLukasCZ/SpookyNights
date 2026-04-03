@@ -19,12 +19,12 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <Dependencies Include="game" Version="1.21.5" />
+    <Dependencies Include="game" Version="1.22.0-rc.6" />
   </ItemGroup>
 
   <!-- Project settings -->
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -79,7 +79,7 @@
     <!-- ImGui for debug tools (requires ImGui mod installed if you call ImGui methods) -->
     <PackageReference Include="VSImGui" Version="0.0.6" />
     <Reference Include="Vintagestory">
-      <HintPath>C:\Jeux\Vintage Story\v1.21\Vintagestory.dll</HintPath>
+      <HintPath>C:\Jeux\Vintage Story\v1.22\Vintagestory.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <!-- Vintage Story libraries -->
