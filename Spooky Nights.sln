@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.4.11626.88 stable
+VisualStudioVersion = 18.4.11626.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spooky Nights", "Spooky Nights.csproj", "{306BB974-F958-4E75-9160-0186A05632C8}"
 EndProject
@@ -18,18 +18,19 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Debug-Stable|Any CPU.ActiveCfg = V1.21 Debug-Stable|Any CPU
+		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Debug-Stable|Any CPU.Build.0 = V1.21 Debug-Stable|Any CPU
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Debug-Stable|x64.ActiveCfg = Debug-Stable|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Debug-Stable|x64.Build.0 = Debug-Stable|x64
-		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|Any CPU.ActiveCfg = Release-Preview|Any CPU
-		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|Any CPU.Build.0 = Release-Preview|Any CPU
+		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|Any CPU.ActiveCfg = Release-Preview|x64
+		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|Any CPU.Build.0 = Release-Preview|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|x64.ActiveCfg = Release-Stable|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.21 Release-Stable|x64.Build.0 = Release-Stable|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.22 Debug-Preview|Any CPU.ActiveCfg = Debug|Any CPU
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.22 Debug-Preview|Any CPU.Build.0 = Debug|Any CPU
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.22 Debug-Preview|x64.ActiveCfg = Debug-Preview|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.V1.22 Debug-Preview|x64.Build.0 = Debug-Preview|x64
-		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|Any CPU.ActiveCfg = Release|Any CPU
-		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|Any CPU.Build.0 = Release|Any CPU
+		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|Any CPU.ActiveCfg = Release|x64
+		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|Any CPU.Build.0 = Release|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|x64.ActiveCfg = Release|x64
 		{306BB974-F958-4E75-9160-0186A05632C8}.v1.22 Release-Preview|x64.Build.0 = Release|x64
 	EndGlobalSection
