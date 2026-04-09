@@ -4,52 +4,41 @@
     "op": "addmerge",
     "path": "/variantgroups/1/states",
     "value": [ "spectrium", "etherium", "aetherium" ],
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
     "path": "/shapeByType",
     "value": {
-      "spear-generic-spectrium": { "base": "game:item/tool/spear/spectrium" },
-      "spear-generic-etherium": { "base": "game:item/tool/spear/etherium" },
-      "spear-generic-aetherium": { "base": "game:item/tool/spear/aetherium" }
+      "spearhead-generic-spectrium": { "base": "game:item/tool/spear/metal-iron" },
+      "spearhead-generic-etherium": { "base": "game:item/tool/spear/metal-meteoriciron" },
+      "spearhead-generic-aetherium": { "base": "game:item/tool/spear/metal-steel" }
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
-    "op": "replace",
+    "op": "addmerge",
     "path": "/texturesByType",
     "value": {
-      "spear-generic-spectrium": { "material": { "base": "spookynights:item/resource/spectrium" } },
-      "spear-generic-etherium": { "material": { "base": "spookynights:item/resource/etherium" } },
-      "spear-generic-aetherium": { "material": { "base": "spookynights:item/resource/aetherium" } },
-      "spear-generic-erel": {},
-      "spear-scrap-scrap": {},
-      "spear-generic-hacking": {},
-      "spear-generic-flint": { "material": { "base": "block/stone/{material}" } },
-      "@spear-generic-(chert|granite|andesite|basalt|obsidian|peridotite)": { "material": { "base": "block/stone/rock/{material}1" } },
-      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze)": { "material": { "base": "block/metal/ingot/{material}" } },
-      "spear-generic-ornate*": {},
-      "spear-generic-*": { "material": { "base": "item/tool/material/{material}" } }
-    },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
+      "spear-generic-spectrium": { 
+        "material": { "base": "spookynights:block/metal/ingot/spectrium" },
+        "handle": { "base": "game:block/wood/bark/oak" },
+        "string": { "base": "game:block/transparent" }
+      },
+      "spear-generic-etherium": { 
+        "material": { "base": "spookynights:block/metal/ingot/etherium" },
+        "handle": { "base": "game:block/wood/bark/oak" },
+        "string": { "base": "game:block/transparent" }
+      },
+      "spear-generic-aetherium": { 
+        "material": { "base": "spookynights:block/metal/ingot/aetherium" },
+        "handle": { "base": "game:block/wood/bark/oak" },
+        "string": { "base": "game:block/transparent" }
       }
-    ]
+    },
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -60,14 +49,8 @@
       "spear-generic-etherium": 3.3,
       "spear-generic-aetherium": 4
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
-
   {
     "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
@@ -77,12 +60,7 @@
       "*-etherium": 6.5,
       "*-aetherium": 8
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -93,12 +71,7 @@
       "*-etherium": 0,
       "*-aetherium": 0
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -109,12 +82,7 @@
       "spear-generic-etherium": 450,
       "spear-generic-aetherium": 600
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:itemtypes/tool/spear.json",
@@ -125,11 +93,6 @@
       "spear-generic-etherium": { "spectralDamageBonus": 1.2 },
       "spear-generic-aetherium": { "spectralDamageBonus": 1.4 }
     },
-    "dependsOn": [
-      {
-        "modid": "combatoverhaul",
-        "invert": true
-      }
-    ]
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   }
 ]
