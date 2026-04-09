@@ -10,6 +10,7 @@
     <RequiredOnClient>true</RequiredOnClient>
     <RequiredOnServer>true</RequiredOnServer>
     <Platforms>AnyCPU;x64</Platforms>
+		<Configurations>Release-Preview;Debug-Stable;Release-Stable;Debug-Preview</Configurations>
   </PropertyGroup>
 
   <!-- Authors -->
@@ -24,7 +25,6 @@
 
   <!-- Project settings -->
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -47,10 +47,21 @@
     <ReleasePath>$(ReleasesDir)\$(ReleaseFile).zip</ReleasePath>
     <ReleasePathDev>$(ReleasesDir)\$(ReleaseFile)_dev.zip</ReleasePathDev>
     <ExternalLibDir>$(ProjectDir)\external</ExternalLibDir>
-    <GameDirectory Condition="'$(GameDirectory)' == ''">$(VINTAGE_STORY)</GameDirectory>
   </PropertyGroup>
 
-  <!-- Startup settings -->
+	<!-- STABLE -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug-Stable' Or '$(Configuration)' == 'Release-Stable'">
+		<TargetFramework>net8.0</TargetFramework>
+		<GameDirectory>C:\Jeux\Vintage Story\v1.21</GameDirectory>
+	</PropertyGroup>
+
+	<!-- PREVIEW (RC) -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug-Preview' Or '$(Configuration)' == 'Release-Preview'">
+		<TargetFramework>net10.0</TargetFramework>
+		<GameDirectory>C:\Jeux\Vintage Story\v1.22</GameDirectory>
+	</PropertyGroup>
+
+	<!-- Startup settings -->
   <PropertyGroup>
     <DataFolder>$(AppData)\$(DataFolderName)</DataFolder>
     <AditionalModsFolder>$(AppData)\$(DataFolderName)\Mods</AditionalModsFolder>
