@@ -20,7 +20,7 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <Dependencies Include="game" Version="1.21.5" />
+    <Dependencies Include="game" Version="1.22.0-rc.7" />
   </ItemGroup>
 
   <!-- Project settings -->
@@ -90,7 +90,7 @@
     <!-- ImGui for debug tools (requires ImGui mod installed if you call ImGui methods) -->
     <PackageReference Include="VSImGui" Version="0.0.6" />
     <Reference Include="Vintagestory">
-      <HintPath>C:\Jeux\Vintage Story\v1.21\Vintagestory.dll</HintPath>
+			<HintPath>$(GameDirectory)\Vintagestory.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <!-- Vintage Story libraries -->
