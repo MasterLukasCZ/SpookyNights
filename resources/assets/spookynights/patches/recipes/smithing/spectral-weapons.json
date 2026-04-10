@@ -21,18 +21,18 @@
     "op": "add",
     "path": "/ingredient/allowedVariants/-",
     "value": "spectrium",
-    "file": "game:recipes/smithing/spear.json"
+    "file": "game:recipes/smithing/spear-copper.json"
   },
   {
     "op": "add",
     "path": "/ingredient/allowedVariants/-",
     "value": "etherium",
-    "file": "game:recipes/smithing/spear.json"
+    "file": "game:recipes/smithing/spear-iron.json"
   },
   {
     "op": "add",
     "path": "/ingredient/allowedVariants/-",
     "value": "aetherium",
-    "file": "game:recipes/smithing/spear.json"
+    "file": "game:recipes/smithing/spear-meteoriciron.json"
   }
 ]

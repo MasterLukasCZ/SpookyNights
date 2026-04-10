@@ -3,7 +3,11 @@
     "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
     "path": "/variantgroups/1/states",
-    "value": [ "spectrium", "etherium", "aetherium" ],
+    "value": [
+      "spectrium",
+      "etherium",
+      "aetherium"
+    ],
     "dependsOn": [
       {
         "modid": "combatoverhaul",
@@ -16,9 +20,15 @@
     "op": "addmerge",
     "path": "/shapeByType",
     "value": {
-      "spear-generic-spectrium": { "base": "game:item/tool/spear/spectrium" },
-      "spear-generic-etherium": { "base": "game:item/tool/spear/etherium" },
-      "spear-generic-aetherium": { "base": "game:item/tool/spear/aetherium" }
+      "spear-generic-spectrium": {
+        "base": "game:item/tool/spear/metal-spectrium"
+      },
+      "spear-generic-etherium": {
+        "base": "game:item/tool/spear/metal-etherium"
+      },
+      "spear-generic-aetherium": {
+        "base": "game:item/tool/spear/metal-aetherium"
+      }
     },
     "dependsOn": [
       {
@@ -29,20 +39,14 @@
   },
   {
     "file": "game:itemtypes/tool/spear.json",
-    "op": "replace",
+    "op": "addmerge",
     "path": "/texturesByType",
     "value": {
-      "spear-generic-spectrium": { "material": { "base": "spookynights:item/resource/spectrium" } },
-      "spear-generic-etherium": { "material": { "base": "spookynights:item/resource/etherium" } },
-      "spear-generic-aetherium": { "material": { "base": "spookynights:item/resource/aetherium" } },
-      "spear-generic-erel": {},
-      "spear-scrap-scrap": {},
-      "spear-generic-hacking": {},
-      "spear-generic-flint": { "material": { "base": "block/stone/{material}" } },
-      "@spear-generic-(chert|granite|andesite|basalt|obsidian|peridotite)": { "material": { "base": "block/stone/rock/{material}1" } },
-      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze)": { "material": { "base": "block/metal/ingot/{material}" } },
-      "spear-generic-ornate*": {},
-      "spear-generic-*": { "material": { "base": "item/tool/material/{material}" } }
+      "@spear-generic-(spectrium|etherium|aetherium)": {
+        "ingot": {
+          "base": "game:block/metal/ingot/{material}"
+        }
+      }
     },
     "dependsOn": [
       {
@@ -67,7 +71,6 @@
       }
     ]
   },
-
   {
     "file": "game:itemtypes/tool/spear.json",
     "op": "addmerge",
@@ -121,9 +124,15 @@
     "op": "addmerge",
     "path": "/attributesByType",
     "value": {
-      "spear-generic-spectrium": { "spectralDamageBonus": 1.0 },
-      "spear-generic-etherium": { "spectralDamageBonus": 1.2 },
-      "spear-generic-aetherium": { "spectralDamageBonus": 1.4 }
+      "spear-generic-spectrium": {
+        "spectralDamageBonus": 1
+      },
+      "spear-generic-etherium": {
+        "spectralDamageBonus": 1.2
+      },
+      "spear-generic-aetherium": {
+        "spectralDamageBonus": 1.4
+      }
     },
     "dependsOn": [
       {
@@ -131,5 +140,446 @@
         "invert": true
       }
     ]
+  },
+  {
+    "file": "game:itemtypes/tool/spear.json",
+    "op": "replace",
+    "path": "/attributes/groundStorageTransformByType",
+    "value": {
+      "spear-generic-hacking": {
+        "translation": {
+          "x": -0.45,
+          "y": 0.35,
+          "z": 0.2
+        },
+        "rotation": {
+          "x": 16,
+          "y": 1,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-scrap-scrap": {
+        "translation": {
+          "x": 0,
+          "y": 0.25,
+          "z": 0.546
+        },
+        "rotation": {
+          "x": 16,
+          "y": 90,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-boar-ruined": {
+        "translation": {
+          "x": 0,
+          "y": 0.65,
+          "z": 0.61
+        },
+        "rotation": {
+          "x": 16,
+          "y": 90,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-voulge-ruined": {
+        "translation": {
+          "x": 0.24,
+          "y": 0.65,
+          "z": 0.516
+        },
+        "rotation": {
+          "x": 16,
+          "y": 130,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-fork-ruined": {
+        "translation": {
+          "x": -0.25,
+          "y": 0.65,
+          "z": 0.11
+        },
+        "rotation": {
+          "x": 16,
+          "y": 0,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-ranseur-ruined": {
+        "translation": {
+          "x": 0,
+          "y": 0.93,
+          "z": -0.11
+        },
+        "rotation": {
+          "x": 16,
+          "y": -90,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "@spear-generic-(copper|tinbronze|bismuthbronze)": {
+        "translation": {
+          "x": -0.39,
+          "y": 0.78,
+          "z": 0.235
+        },
+        "rotation": {
+          "x": 16,
+          "y": 1,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "@spear-generic-(blackbronze|iron|meteoriciron|steel|spectrium|etherium|aetherium)": {
+        "translation": {
+          "x": -0.39,
+          "y": 0.78,
+          "z": 0.2
+        },
+        "rotation": {
+          "x": 16,
+          "y": 1,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "spear-generic-ornate*": {
+        "translation": {
+          "x": -0.39,
+          "y": 0.72,
+          "z": 0.25
+        },
+        "rotation": {
+          "x": 16,
+          "y": 1,
+          "z": 90
+        },
+        "scale": 0.81
+      },
+      "spear-generic-erel": {
+        "translation": {
+          "x": 0,
+          "y": 0.88,
+          "z": 0.79
+        },
+        "rotation": {
+          "x": 16,
+          "y": 90,
+          "z": 90
+        },
+        "scale": 0.85
+      },
+      "*": {
+        "translation": {
+          "x": 0,
+          "y": 0.26,
+          "z": 0.596
+        },
+        "rotation": {
+          "x": 16,
+          "y": 90,
+          "z": 90
+        },
+        "scale": 0.85
+      }
+    },
+    "dependsOn": [
+      {
+        "modid": "combatoverhaul",
+        "invert": true
+      }
+    ]
+  },
+  {
+    "file": "game:itemtypes/tool/spear.json",
+    "op": "replace",
+    "path": "/guiTransformByType",
+    "value": {
+      "*-erel": {
+        "translation": {
+          "x": -0.1,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -60,
+          "y": 124,
+          "z": 6
+        },
+        "origin": {
+          "x": 0.39,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 2.26
+      },
+      "spear-generic-hacking": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 23,
+          "y": -180,
+          "z": -52
+        },
+        "origin": {
+          "x": 1.43,
+          "y": 0,
+          "z": 0.52
+        },
+        "scale": 2.26
+      },
+      "spear-scrap-scrap": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -60,
+          "y": 124,
+          "z": 6
+        },
+        "origin": {
+          "x": 1.54,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 2.26
+      },
+      "spear-boar-ruined": {
+        "rotation": {
+          "x": 2,
+          "y": 157,
+          "z": -46
+        },
+        "origin": {
+          "x": 1.39,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 2.26
+      },
+      "spear-fork-ruined": {
+        "rotation": {
+          "x": -17,
+          "y": 144,
+          "z": -37
+        },
+        "origin": {
+          "x": 1.39,
+          "y": 0.05,
+          "z": 0.5
+        },
+        "scale": 2
+      },
+      "spear-voulge-ruined": {
+        "rotation": {
+          "x": -180,
+          "y": 128,
+          "z": 38
+        },
+        "origin": {
+          "x": 1.29,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 2.26
+      },
+      "spear-ranseur-ruined": {
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": -175,
+          "y": 140,
+          "z": 38
+        },
+        "origin": {
+          "x": 1.19,
+          "y": 0,
+          "z": 0.6
+        },
+        "scale": 2.26
+      },
+      "spear-generic-ornategold": {
+        "rotation": {
+          "x": -16,
+          "y": -2,
+          "z": -134
+        },
+        "origin": {
+          "x": 1.47,
+          "y": 0.05,
+          "z": 0.5
+        },
+        "scale": 3.09
+      },
+      "spear-generic-ornatesilver": {
+        "rotation": {
+          "x": -16,
+          "y": -2,
+          "z": -134
+        },
+        "origin": {
+          "x": 1.47,
+          "y": 0.05,
+          "z": 0.5
+        },
+        "scale": 3.09
+      },
+      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|steel|spectrium|etherium|aetherium)": {
+        "rotation": {
+          "x": 33,
+          "y": 0,
+          "z": -127
+        },
+        "origin": {
+          "x": 1.39,
+          "y": 0.05,
+          "z": 0.52
+        },
+        "scale": 2.26
+      },
+      "*": {
+        "rotation": {
+          "x": -39,
+          "y": -29,
+          "z": -134
+        },
+        "origin": {
+          "x": 1.4,
+          "y": 0.05,
+          "z": 0.5
+        },
+        "scale": 3.09
+      }
+    }
+  },
+  {
+    "file": "game:itemtypes/tool/spear.json",
+    "op": "replace",
+    "path": "/tpHandTransformByType",
+    "value": {
+      "spear-scrap-scrap": {
+        "translation": {
+          "x": -1.14,
+          "y": 0.01,
+          "z": -0.6
+        },
+        "rotation": {
+          "x": -90,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.6,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      },
+      "spear-voulge-ruined": {
+        "translation": {
+          "x": -1.24,
+          "y": 0.03,
+          "z": -0.61
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      },
+      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze|hacking|iron|meteoriciron|steel|spectrium|etherium|aetherium)": {
+        "translation": {
+          "x": -1.29,
+          "y": 0.03,
+          "z": -0.57
+        },
+        "rotation": {
+          "x": -90,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.6,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      },
+      "@spear-generic-(ornategold|ornatesilver)": {
+        "translation": {
+          "x": -1.04,
+          "y": 0.02,
+          "z": -0.57
+        },
+        "rotation": {
+          "x": -90,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      },
+      "*-ruined": {
+        "translation": {
+          "x": -1.24,
+          "y": 0.03,
+          "z": -0.61
+        },
+        "rotation": {
+          "x": -90,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      },
+      "*": {
+        "translation": {
+          "x": -1.29,
+          "y": 0.02,
+          "z": -0.57
+        },
+        "rotation": {
+          "x": -90,
+          "y": 0,
+          "z": 0
+        },
+        "origin": {
+          "x": 0.5,
+          "y": 0,
+          "z": 0.5
+        },
+        "scale": 0.8
+      }
+    }
   }
 ]

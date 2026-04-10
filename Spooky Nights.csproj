@@ -3,13 +3,14 @@
   <PropertyGroup>
     <ModName>Spooky Nights</ModName>
     <ModType>code</ModType>
-    <ModVersion>1.1.1</ModVersion>
+    <ModVersion>2.0.0-rc.1</ModVersion>
     <ModId>spookynights</ModId>
     <Description>A small overhaul mod introducing spectral creatures that haunt the darkness. Experience the chilling presence of the unknown when the sun sets.</Description>
     <Side>universal</Side>
     <RequiredOnClient>true</RequiredOnClient>
     <RequiredOnServer>true</RequiredOnServer>
     <Platforms>AnyCPU;x64</Platforms>
+		<Configurations>Release-Preview;Debug-Stable;Release-Stable;Debug-Preview</Configurations>
   </PropertyGroup>
 
   <!-- Authors -->
@@ -19,12 +20,11 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <Dependencies Include="game" Version="1.21.5" />
+    <Dependencies Include="game" Version="1.22.0-rc.7" />
   </ItemGroup>
 
   <!-- Project settings -->
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -47,10 +47,21 @@
     <ReleasePath>$(ReleasesDir)\$(ReleaseFile).zip</ReleasePath>
     <ReleasePathDev>$(ReleasesDir)\$(ReleaseFile)_dev.zip</ReleasePathDev>
     <ExternalLibDir>$(ProjectDir)\external</ExternalLibDir>
-    <GameDirectory Condition="'$(GameDirectory)' == ''">$(VINTAGE_STORY)</GameDirectory>
   </PropertyGroup>
 
-  <!-- Startup settings -->
+	<!-- STABLE -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug-Stable' Or '$(Configuration)' == 'Release-Stable'">
+		<TargetFramework>net8.0</TargetFramework>
+		<GameDirectory>C:\Jeux\Vintage Story\v1.21</GameDirectory>
+	</PropertyGroup>
+
+	<!-- PREVIEW (RC) -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug-Preview' Or '$(Configuration)' == 'Release-Preview'">
+		<TargetFramework>net10.0</TargetFramework>
+		<GameDirectory>C:\Jeux\Vintage Story\v1.22</GameDirectory>
+	</PropertyGroup>
+
+	<!-- Startup settings -->
   <PropertyGroup>
     <DataFolder>$(AppData)\$(DataFolderName)</DataFolder>
     <AditionalModsFolder>$(AppData)\$(DataFolderName)\Mods</AditionalModsFolder>
@@ -79,7 +90,7 @@
     <!-- ImGui for debug tools (requires ImGui mod installed if you call ImGui methods) -->
     <PackageReference Include="VSImGui" Version="0.0.6" />
     <Reference Include="Vintagestory">
-      <HintPath>C:\Jeux\Vintage Story\v1.21\Vintagestory.dll</HintPath>
+			<HintPath>$(GameDirectory)\Vintagestory.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <!-- Vintage Story libraries -->
@@ -180,22 +191,25 @@
   </Target>
 
   <!-- Archives output directory into zip and puts it into Releases folder -->
-  <Target Name="ZipFiles" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
-    <Message Text="Pachaging into '$(ReleaseFile)'" Importance="high" />
-    <Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
-    <MakeDir Directories="$(ReleasesDir)" />
-    <Delete Files="$(ReleasePath)" />
-    <ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePath)" />
-  </Target>
-  <Target Name="ZipFilesDev" AfterTargets="Build" Condition=" '$(Configuration)' == 'Debug' and '$(PackageDevBuild)' == 'true'">
-    <Message Text="Pachaging into '$(ReleaseFile)'" Importance="high" />
-    <Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
-    <MakeDir Directories="$(ReleasesDir)" />
-    <Delete Files="$(ReleasePathDev)" />
-    <ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePathDev)" />
-  </Target>
+	<Target Name="ZipFiles" AfterTargets="Build" Condition="'$(Configuration)' == 'Release-Stable' Or '$(Configuration)' == 'Release-Preview'">
+		<Message Text="Packaging into '$(ReleaseFile)'" Importance="high" />
+		<Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
+		<MakeDir Directories="$(ReleasesDir)" />
+		<Delete Files="$(ReleasePath)" />
+		<ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePath)" />
+	</Target>
+
+	<Target Name="ZipFilesDev" AfterTargets="Build" Condition="('$(Configuration)' == 'Debug-Stable' Or '$(Configuration)' == 'Debug-Preview') And '$(PackageDevBuild)' == 'true'">
+		<Message Text="Packaging into '$(ReleaseFile)'" Importance="high" />
+		<Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
+		<MakeDir Directories="$(ReleasesDir)" />
+		<Delete Files="$(ReleasePathDev)" />
+		<ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePathDev)" />
+	</Target>
+
+	<ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 </Project>

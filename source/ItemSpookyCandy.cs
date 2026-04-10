@@ -18,6 +18,7 @@ namespace SpookyNights
         public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
         {
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+            if (inSlot.Itemstack == null) return;
 
             string candyType = GetCandyType(inSlot.Itemstack);
             string descText = "";
@@ -62,21 +63,22 @@ namespace SpookyNights
         public override void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             base.OnHeldInteractStop(secondsUsed, slot, byEntity, blockSel, entitySel);
+            if (slot.Itemstack == null) return;
 
             if (secondsUsed > 0.9f)
             {
                 string candyType = GetCandyType(slot.Itemstack);
-
+          
                 // --- CLIENT SIDE: PHYSICS (Jump) ---
                 if (api.Side == EnumAppSide.Client)
                 {
                     if (candyType == "spidergummy")
                     {
                         // Physics impulse
-                        byEntity.SidedPos.Motion.Y += 0.35;
-                        Vec3f look = byEntity.SidedPos.GetViewVector();
-                        byEntity.SidedPos.Motion.X += look.X * 0.5;
-                        byEntity.SidedPos.Motion.Z += look.Z * 0.5;
+                        byEntity.Pos.Motion.Y += 0.35;
+                        Vec3f look = byEntity.Pos.GetViewVector();
+                        byEntity.Pos.Motion.X += look.X * 0.5;
+                        byEntity.Pos.Motion.Z += look.Z * 0.5;
                     }
                 }
 
@@ -230,7 +232,7 @@ namespace SpookyNights
                 double dz = (rand.NextDouble() - 0.5) * 20;
                 entity.TeleportToDouble(entity.Pos.X + dx, entity.Pos.Y + 1, entity.Pos.Z + dz);
 
-                Block web = entity.World.GetBlock(new AssetLocation("game:cobweb-n-d"));
+                Block? web = entity.World.GetBlock(new AssetLocation("game:cobweb-n-d"));
                 if (web != null) entity.World.BlockAccessor.SetBlock(web.Id, entity.Pos.AsBlockPos);
 
                 msg = Lang.Get("spookynights:candy-msg-shadow-fail");
@@ -243,6 +245,7 @@ namespace SpookyNights
 
         private string GetCandyType(ItemStack stack)
         {
+            if (stack == null) return "";
             string candyType = stack.Attributes.GetString("type", "");
             if (string.IsNullOrEmpty(candyType))
             {
@@ -291,7 +294,7 @@ namespace SpookyNights
                1.0f, 3.0f,
                EnumParticleModel.Quad
            );
-            particles.MinPos = entity.ServerPos.XYZ.AddCopy(-1, entity.LocalEyePos.Y - 0.5, -1);
+            particles.MinPos = entity.Pos.XYZ.AddCopy(-1, entity.LocalEyePos.Y - 0.5, -1);
             particles.AddPos = new Vec3d(2, 1, 2);
             particles.WithTerrainCollision = false;
             particles.VertexFlags = 0;
@@ -311,7 +314,7 @@ namespace SpookyNights
                 0.2f, 0.5f,
                 EnumParticleModel.Quad
             );
-            particles.MinPos = entity.ServerPos.XYZ.AddCopy(-0.3, 1.0, -0.3);
+            particles.MinPos = entity.Pos.XYZ.AddCopy(-0.3, 1.0, -0.3);
             particles.AddPos = new Vec3d(0.6, 0.5, 0.6);
             particles.WithTerrainCollision = false;
             particles.VertexFlags = 255;
