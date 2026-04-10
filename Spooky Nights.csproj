@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ModName>Spooky Nights</ModName>
     <ModType>code</ModType>
-    <ModVersion>1.1.1</ModVersion>
+    <ModVersion>2.0.0-pre.1</ModVersion>
     <ModId>spookynights</ModId>
     <Description>A small overhaul mod introducing spectral creatures that haunt the darkness. Experience the chilling presence of the unknown when the sun sets.</Description>
     <Side>universal</Side>
@@ -191,22 +191,25 @@
   </Target>
 
   <!-- Archives output directory into zip and puts it into Releases folder -->
-  <Target Name="ZipFiles" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
-    <Message Text="Pachaging into '$(ReleaseFile)'" Importance="high" />
-    <Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
-    <MakeDir Directories="$(ReleasesDir)" />
-    <Delete Files="$(ReleasePath)" />
-    <ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePath)" />
-  </Target>
-  <Target Name="ZipFilesDev" AfterTargets="Build" Condition=" '$(Configuration)' == 'Debug' and '$(PackageDevBuild)' == 'true'">
-    <Message Text="Pachaging into '$(ReleaseFile)'" Importance="high" />
-    <Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
-    <Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
-    <MakeDir Directories="$(ReleasesDir)" />
-    <Delete Files="$(ReleasePathDev)" />
-    <ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePathDev)" />
-  </Target>
+	<Target Name="ZipFiles" AfterTargets="Build" Condition="'$(Configuration)' == 'Release-Stable' Or '$(Configuration)' == 'Release-Preview'">
+		<Message Text="Packaging into '$(ReleaseFile)'" Importance="high" />
+		<Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
+		<MakeDir Directories="$(ReleasesDir)" />
+		<Delete Files="$(ReleasePath)" />
+		<ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePath)" />
+	</Target>
+
+	<Target Name="ZipFilesDev" AfterTargets="Build" Condition="('$(Configuration)' == 'Debug-Stable' Or '$(Configuration)' == 'Debug-Preview') And '$(PackageDevBuild)' == 'true'">
+		<Message Text="Packaging into '$(ReleaseFile)'" Importance="high" />
+		<Delete Files="$(OutputPath)\$(ModId).dll" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).pdb" Condition="'$(ModType)' != 'code'" />
+		<Delete Files="$(OutputPath)\$(ModId).deps.json" Condition="'$(ModType)' != 'code'" />
+		<MakeDir Directories="$(ReleasesDir)" />
+		<Delete Files="$(ReleasePathDev)" />
+		<ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ReleasePathDev)" />
+	</Target>
+
+	<ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 </Project>

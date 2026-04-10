@@ -1,38 +1,56 @@
 [
   {
     "file": "game:entities/nonliving/projectile/spear.json",
-    "op": "add",
-    "path": "/variantgroups/1/states/-",
-    "value": "spectrium"
+    "op": "addmerge",
+    "path": "/variantgroups/1/states",
+    "value": [ "spectrium", "etherium", "aetherium" ],
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   },
   {
     "file": "game:entities/nonliving/projectile/spear.json",
-    "op": "add",
-    "path": "/variantgroups/1/states/-",
-    "value": "etherium"
-  },
-  {
-    "file": "game:entities/nonliving/projectile/spear.json",
-    "op": "add",
-    "path": "/variantgroups/1/states/-",
-    "value": "aetherium"
-  },
-  {
-    "file": "game:itemtypes/tool/spear.json",
     "op": "replace",
-    "path": "/texturesByType",
+    "path": "/client/shapeByType",
     "value": {
-      "spear-generic-spectrium": { "material": { "base": "spookynights:item/resource/spectrium" } },
-      "spear-generic-etherium": { "material": { "base": "spookynights:item/resource/etherium" } },
-      "spear-generic-aetherium": { "material": { "base": "spookynights:item/resource/aetherium" } },
-      "spear-generic-erel": {},
-      "spear-scrap-scrap": {},
-      "spear-generic-hacking": {},
-      "spear-generic-flint": { "material": { "base": "block/stone/{material}" } },
-      "@spear-generic-(chert|granite|andesite|basalt|obsidian|peridotite)": { "material": { "base": "block/stone/rock/{material}1" } },
-      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze)": { "material": { "base": "block/metal/ingot/{material}" } },
-      "spear-generic-ornate*": {},
-      "spear-generic-*": { "material": { "base": "item/tool/material/{material}" } }
+      "spear-scrap-scrap": {
+        "base": "game:item/tool/spear/scrap",
+        "offsetX": -0.8125
+      },
+      "@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|steel|spectrium|etherium|aetherium)": {
+        "base": "game:item/tool/spear/metal-{material}",
+        "offsetX": -0.8125
+      },
+      "spear-generic-ornategold": {
+        "base": "game:item/tool/spear/ornategold",
+        "offsetX": -0.8125
+      },
+      "spear-generic-ornatesilver": {
+        "base": "game:item/tool/spear/ornatesilver",
+        "offsetX": -0.8125
+      },
+      "spear-generic-hacking": {
+        "base": "game:item/tool/spear/hacking",
+        "offsetX": -0.8125
+      },
+      "*-ruined": {
+        "base": "game:item/tool/spear/ruined/{type}"
+      }
     }
+  },
+  {
+    "file": "game:entities/nonliving/projectile/spear.json",
+    "op": "replace",
+    "path": "/client/texturesByType",
+    "value": {
+			"spear-generic-flint": { 
+				"stone": { "base": "game:block/stone/{material}" } 
+			},
+			"@spear-generic-(chert|granite|andesite|basalt|obsidian|peridotite)": { 
+				"stone": { "base": "game:block/stone/rock/{material}1" } 
+			},
+			"@spear-generic-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|steel|spectrium|etherium|aetherium)": { 
+				"ingot": { "base": "game:block/metal/ingot/{material}" } 
+			} 
+    },
+    "dependsOn": [ { "modid": "combatoverhaul", "invert": true } ]
   }
 ]
