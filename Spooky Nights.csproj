@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ModName>Spooky Nights</ModName>
     <ModType>code</ModType>
-    <ModVersion>2.0.0-pre.1</ModVersion>
+    <ModVersion>2.0.0-rc.1</ModVersion>
     <ModId>spookynights</ModId>
     <Description>A small overhaul mod introducing spectral creatures that haunt the darkness. Experience the chilling presence of the unknown when the sun sets.</Description>
     <Side>universal</Side>
