@@ -1,0 +1,68 @@
+{
+	"editor": {
+		"collapsedPaths": ",Root/origin/LowerTorso/UpperTorso/Shoulders/Neck1/Neck2/Sheet2,Root/origin/LowerTorso/UpperTorso/RibL1-1,Root/origin/LowerTorso/UpperTorso/Flap2,Root/origin/LowerTorso/UpperTorso/RibR1-1,Root/origin/LowerTorso/UpperTorso/Shoulders/Neck1/Neck2/RibR1-4,Root/origin/LowerTorso/UpperTorso/RibR1-2,Root/origin/LowerTorso/UpperTorso/crossbow",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 64,
+	"textureHeight": 64,
+	"textureSizes": {
+		"test": [64,64],
+		"bonesrotten": [16,16],
+		"rusty-iron": [16,16]
+	},
+	"textures": {
+		"skin": "entity/bowtorn/surface1"
+	},
+	"elements": [
+		{
+			"name": "Spine1",
+			"from": [ -2.0, 0.0, 7.65 ],
+			"to": [ -1.3, 7.2, 8.35 ],
+			"uv": [ 62.0, 0.0 ],
+			"rotationOrigin": [ -2.0, 0.0, 15.7 ],
+			"rotationZ": 90.0,
+			"faces": {
+				"north": { "texture": "#skin", "uv": [ 62.0, 0.5, 62.5, 7.5 ] },
+				"east": { "texture": "#skin", "uv": [ 62.5, 0.5, 63.0, 7.5 ] },
+				"south": { "texture": "#skin", "uv": [ 63.0, 0.5, 63.5, 7.5 ] },
+				"west": { "texture": "#skin", "uv": [ 63.5, 0.5, 64.0, 7.5 ] },
+				"up": { "texture": "#skin", "uv": [ 62.0, 0.0, 62.5, 0.5 ] },
+				"down": { "texture": "#skin", "uv": [ 62.5, 0.0, 63.0, 0.5 ] }
+			},
+			"children": [
+				{
+					"name": "Spine2",
+					"from": [ 0.0, -6.0, 0.0 ],
+					"to": [ 0.7, 0.0, 0.7 ],
+					"uv": [ 62.0, 7.5 ],
+					"rotationOrigin": [ 0.4, 0.0, 0.4 ],
+					"faces": {
+						"north": { "texture": "#skin", "uv": [ 62.0, 8.0, 62.5, 14.0 ] },
+						"east": { "texture": "#skin", "uv": [ 62.5, 8.0, 63.0, 14.0 ] },
+						"south": { "texture": "#skin", "uv": [ 63.0, 8.0, 63.5, 14.0 ] },
+						"west": { "texture": "#skin", "uv": [ 63.5, 8.0, 64.0, 14.0 ] },
+						"up": { "texture": "#skin", "uv": [ 62.0, 7.5, 62.5, 8.0 ] },
+						"down": { "texture": "#skin", "uv": [ 62.5, 7.5, 63.0, 8.0 ] }
+					},
+					"children": [
+						{
+							"name": "Spine3",
+							"from": [ 0.0, -6.0, 0.0 ],
+							"to": [ 0.7, 0.0, 0.7 ],
+							"uv": [ 62.0, 14.0 ],
+							"rotationOrigin": [ 0.4, 0.0, 0.4 ],
+							"faces": {
+								"north": { "texture": "#skin", "uv": [ 62.0, 14.5, 62.5, 20.5 ] },
+								"east": { "texture": "#skin", "uv": [ 62.5, 14.5, 63.0, 20.5 ] },
+								"south": { "texture": "#skin", "uv": [ 63.0, 14.5, 63.5, 20.5 ] },
+								"west": { "texture": "#skin", "uv": [ 63.5, 14.5, 64.0, 20.5 ] },
+								"up": { "texture": "#skin", "uv": [ 62.0, 14.0, 62.5, 14.5 ] },
+								"down": { "texture": "#skin", "uv": [ 62.5, 14.0, 63.0, 14.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}
